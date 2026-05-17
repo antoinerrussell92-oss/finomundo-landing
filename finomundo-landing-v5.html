@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinoMundo — Your World. Your Wealth.</title>
+<meta name="description" content="FinoMundo teaches kids and adults money skills through gamified lessons in 3 languages — then unlocks a full paper trading terminal with drawing tools, psychology gates, and a monthly prop firm scholarship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#1A9E6E;--gl:#E0F5EC;--gd:#0D6B4A;
+  --amber:#F5A623;--al:#FEF3DC;
+  --purple:#533AB7;
+  --red:#E24B4A;
+  --gold:#FFD700;
+  --ink:#0F1A14;--muted:#4A6358;--border:#D4E8DD;
+  --bg:#F7FBF8;--white:#FFFFFF;
+  --dark:#0D1117;--dark2:#161B22;--darkb:#30363D;--darkt:#C9D1D9;--darktm:#8B949E;
+  --ff:'Fraunces',Georgia,serif;--fb:'DM Sans',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 32px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;gap:12px;}
+.nav-brand{font-family:var(--ff);font-size:18px;font-weight:900;color:var(--ink);}
+.nav-brand em{font-style:normal;color:var(--green);}
+.nav-domain{font-size:11px;color:var(--muted);}
+.nav-btns{display:flex;gap:6px;flex-shrink:0;}
+.lb{padding:5px 14px;border-radius:99px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-family:var(--fb);transition:all .15s;}
+.lb:hover{border-color:var(--green);color:var(--green);}
+.lb.on{background:var(--green);color:#fff;border-color:var(--green);}
+.page{display:none;}.page.on{display:block;}
+.hero{padding:96px 24px 64px;text-align:center;max-width:780px;margin:0 auto;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--gl);color:var(--gd);font-size:11px;font-weight:600;letter-spacing:.07em;padding:5px 16px;border-radius:99px;margin-bottom:28px;text-transform:uppercase;}
+.edot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+h1{font-family:var(--ff);font-size:clamp(44px,7.5vw,80px);font-weight:900;line-height:1.0;color:var(--ink);margin-bottom:10px;letter-spacing:-2.5px;}
+h1 em{font-style:italic;color:var(--green);}
+.slogan{font-family:var(--ff);font-size:clamp(12px,1.6vw,15px);font-weight:700;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px;}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:560px;margin:0 auto 40px;}
+.cta-group{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.cta-row{display:flex;gap:8px;width:100%;max-width:460px;}
+.cta-input{flex:1;padding:14px 18px;border-radius:12px;border:1.5px solid var(--border);font-size:15px;font-family:var(--fb);background:var(--white);color:var(--ink);outline:none;transition:border-color .15s;}
+.cta-input:focus{border-color:var(--green);}
+.cta-btn{padding:14px 24px;border-radius:12px;background:var(--green);color:#fff;border:none;font-size:14px;font-weight:600;font-family:var(--fb);cursor:pointer;white-space:nowrap;transition:background .15s;}
+.cta-btn:hover{background:var(--gd);}
+.cta-note{font-size:12px;color:var(--muted);}
+.wl-row{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:2px;}
+.avs{display:flex;}
+.av{width:26px;height:26px;border-radius:50%;border:2px solid var(--white);margin-right:-7px;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.phone-wrap{display:flex;justify-content:center;padding:56px 24px 0;}
+.phone{width:240px;background:var(--white);border-radius:36px;border:6px solid var(--ink);overflow:hidden;box-shadow:0 48px 96px rgba(15,26,20,.18);}
+.p-notch{height:22px;background:var(--ink);border-radius:0 0 14px 14px;width:70px;margin:0 auto;}
+.p-screen{padding:14px;}
+.p-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.p-logo{font-family:var(--ff);font-size:15px;font-weight:900;color:var(--ink);}
+.p-logo em{font-style:normal;color:var(--green);}
+.p-streak{font-size:10px;background:var(--al);color:#A05A05;padding:3px 8px;border-radius:99px;font-weight:600;}
+.p-xp{height:4px;background:#E0EDE7;border-radius:99px;overflow:hidden;margin-bottom:10px;}
+.p-xp-f{height:100%;width:65%;background:var(--green);border-radius:99px;}
+.p-chart-bar{display:flex;align-items:flex-end;gap:2px;height:38px;margin-bottom:8px;}
+.p-bar{border-radius:2px 2px 0 0;width:8px;}
+.p-card{background:var(--gl);border-radius:12px;padding:11px;margin-bottom:8px;}
+.p-world{font-size:9px;font-weight:700;color:var(--gd);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.p-q{font-size:10px;color:var(--ink);line-height:1.45;margin-bottom:8px;}
+.p-opts{display:flex;flex-direction:column;gap:4px;}
+.p-opt{font-size:9.5px;padding:5px 8px;border-radius:7px;background:var(--white);border:1px solid var(--border);color:var(--ink);}
+.p-opt.win{background:var(--green);color:#fff;border-color:var(--green);}
+.p-coins{display:flex;align-items:center;gap:5px;font-size:9.5px;color:var(--muted);margin-top:6px;}
+.coin{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+.div-bar{background:var(--ink);text-align:center;padding:18px 24px;font-family:var(--ff);font-size:clamp(12px,1.6vw,15px);font-weight:700;font-style:italic;color:rgba(255,255,255,.45);}
+.div-bar em{font-style:normal;color:var(--amber);}
+.section{padding:80px 24px;max-width:900px;margin:0 auto;}
+.s-eye{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
+.s-title{font-family:var(--ff);font-size:clamp(28px,4vw,46px);font-weight:900;color:var(--ink);line-height:1.08;margin-bottom:44px;letter-spacing:-.5px;}
+.s-title em{font-style:italic;color:var(--green);}
+.s-sub{font-size:15px;color:var(--muted);margin-top:-32px;margin-bottom:36px;line-height:1.7;max-width:620px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.step{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 22px;position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s;}
+.step:hover{box-shadow:0 8px 32px rgba(26,158,110,.1);border-color:var(--green);}
+.step::before{content:attr(data-n);position:absolute;top:-10px;right:10px;font-family:var(--ff);font-size:80px;font-weight:900;color:var(--gl);line-height:1;pointer-events:none;}
+.step-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;position:relative;}
+.step-body{font-size:13px;color:var(--muted);line-height:1.65;position:relative;}
+.worlds-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 24px;}
+.worlds-inner{max-width:900px;margin:0 auto;}
+.worlds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;}
+.w-chip{border-radius:16px;padding:18px 16px;display:flex;align-items:flex-start;gap:10px;border:1px solid var(--border);background:var(--bg);transition:border-color .2s;}
+.w-chip:hover{border-color:var(--green);}
+.w-icon{font-size:22px;flex-shrink:0;margin-top:1px;}
+.w-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.w-desc{font-size:11.5px;color:var(--muted);line-height:1.5;}
+.w-free{font-size:10px;color:var(--green);font-weight:700;margin-top:5px;}
+.w7-chip{border-radius:16px;padding:22px 20px;display:flex;align-items:flex-start;gap:14px;border:1.5px solid var(--amber);background:linear-gradient(135deg,#0d1117,#1a1428);grid-column:span 3;}
+.w7-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.w7-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;}
+.w7-desc{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.6;}
+.w7-badge{display:inline-block;font-size:10px;font-weight:700;background:rgba(245,166,35,.15);color:var(--amber);border:1px solid rgba(245,166,35,.3);padding:3px 10px;border-radius:99px;margin-top:8px;}
+.w7-markets{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.w7-mkt{font-size:10px;font-weight:600;padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);}
+.academy-section{background:var(--dark);padding:88px 24px;}
+.academy-inner{max-width:900px;margin:0 auto;}
+.acad-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--amber);text-transform:uppercase;margin-bottom:12px;}
+.acad-title{font-family:var(--ff);font-size:clamp(30px,4.5vw,50px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.5px;margin-bottom:16px;}
+.acad-title em{font-style:italic;color:var(--amber);}
+.acad-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.75;max-width:600px;margin-bottom:48px;}
+.acad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.acad-card{background:var(--dark2);border:.5px solid var(--darkb);border-radius:16px;padding:22px;}
+.acad-card.hl{border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.05);}
+.acad-card.gn{border-color:rgba(26,158,110,.35);background:rgba(26,158,110,.05);}
+.ac-icon{font-size:26px;margin-bottom:10px;}
+.ac-title{font-size:14px;font-weight:700;color:var(--darkt);margin-bottom:6px;}
+.ac-desc{font-size:12px;color:rgba(201,209,217,.55);line-height:1.65;}
+.acad-lock{background:rgba(255,255,255,.03);border:.5px solid var(--darkb);border-radius:16px;padding:22px 26px;display:flex;align-items:flex-start;gap:18px;margin-top:14px;}
+.al-icon{font-size:32px;flex-shrink:0;margin-top:4px;}
+.al-text{flex:1;}
+.al-title{font-size:15px;font-weight:700;color:var(--darkt);margin-bottom:5px;}
+.al-desc{font-size:13px;color:rgba(201,209,217,.5);line-height:1.65;}
+.al-req{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+.al-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.07);color:rgba(201,209,217,.6);}
+.acad-pass{background:rgba(26,158,110,.07);border:.5px solid rgba(26,158,110,.25);border-radius:14px;padding:18px 22px;margin-top:14px;}
+.ap-title{font-size:13px;font-weight:700;color:#4ade80;margin-bottom:6px;}
+.ap-desc{font-size:12px;color:rgba(201,209,217,.5);line-height:1.65;}
+.psych-section{background:linear-gradient(180deg,#0a0d14 0%,#0d1117 100%);padding:88px 24px;border-top:.5px solid #1a2030;}
+.psych-inner{max-width:900px;margin:0 auto;}
+.psych-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+.pc{background:rgba(83,58,183,.08);border:.5px solid rgba(83,58,183,.3);border-radius:16px;padding:20px;transition:border-color .2s;}
+.pc:hover{border-color:rgba(83,58,183,.6);}
+.pc.am{background:rgba(245,166,35,.06);border-color:rgba(245,166,35,.25);}
+.pc.am:hover{border-color:rgba(245,166,35,.5);}
+.pc.rd{background:rgba(226,75,74,.06);border-color:rgba(226,75,74,.25);}
+.pc.rd:hover{border-color:rgba(226,75,74,.5);}
+.pc-icon{font-size:24px;margin-bottom:10px;}
+.pc-title{font-size:13px;font-weight:700;color:var(--darkt);margin-bottom:6px;}
+.pc-desc{font-size:11.5px;color:rgba(201,209,217,.5);line-height:1.65;}
+.psych-quote{background:rgba(83,58,183,.1);border:.5px solid rgba(83,58,183,.3);border-radius:14px;padding:22px 26px;margin-top:20px;display:flex;gap:16px;align-items:flex-start;}
+.pq-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+.pq-text{font-size:13px;color:rgba(201,209,217,.6);line-height:1.75;font-style:italic;}
+.pq-attr{font-size:11px;color:rgba(120,100,220,.9);font-weight:700;margin-top:8px;font-style:normal;}
+.prop-section{background:var(--dark);padding:88px 24px;border-top:.5px solid var(--darkb);}
+.prop-inner{max-width:900px;margin:0 auto;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+.prop-card{border-radius:16px;padding:22px;border:.5px solid var(--darkb);background:var(--dark2);}
+.prop-card.gd{border-color:rgba(255,215,0,.35);background:rgba(255,215,0,.04);}
+.prop-card.gn{border-color:rgba(26,158,110,.35);background:rgba(26,158,110,.05);}
+.prop-card.am{border-color:rgba(245,166,35,.35);background:rgba(245,166,35,.04);}
+.prop-card.full{grid-column:span 2;}
+.pc2-icon{font-size:28px;margin-bottom:12px;}
+.pc2-title{font-size:15px;font-weight:700;color:var(--darkt);margin-bottom:8px;}
+.pc2-desc{font-size:12.5px;color:rgba(201,209,217,.5);line-height:1.65;}
+.sim-note{background:rgba(245,166,35,.08);border:.5px solid rgba(245,166,35,.25);border-radius:10px;padding:12px 14px;margin-top:14px;}
+.sim-text{font-size:11.5px;color:rgba(245,166,35,.85);line-height:1.6;}
+.scholar-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;}
+.st-card{border-radius:10px;padding:14px;border:.5px solid;}
+.st-val{font-size:16px;font-weight:900;font-family:var(--ff);margin-bottom:4px;}
+.st-reqs{font-size:10.5px;color:rgba(201,209,217,.5);line-height:1.5;}
+.pf-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:16px;}
+.pf-chip{background:rgba(255,255,255,.04);border:.5px solid var(--darkb);border-radius:8px;padding:8px 6px;text-align:center;font-size:9px;color:rgba(201,209,217,.5);font-weight:600;line-height:1.5;}
+.pf-chip.pk{border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.06);color:var(--amber);}
+.feat-section{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 24px;}
+.feat-inner{max-width:900px;margin:0 auto;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+.fc{border-radius:16px;padding:22px;border:1px solid var(--border);background:var(--bg);transition:all .2s;}
+.fc:hover{border-color:var(--green);background:var(--gl);}
+.fc.dk{background:var(--dark);border-color:var(--darkb);}
+.fc.dk:hover{border-color:rgba(245,166,35,.4);}
+.fc-icon{font-size:26px;margin-bottom:12px;}
+.fc-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.fc-title.w{color:var(--darkt);}
+.fc-desc{font-size:12.5px;color:var(--muted);line-height:1.65;}
+.fc-desc.w{color:rgba(201,209,217,.5);}
+.fc-tags{display:flex;gap:4px;margin-top:10px;flex-wrap:wrap;}
+.fc-tag{font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--gl);color:var(--gd);}
+.fc-tag.w{background:rgba(26,158,110,.12);color:#4ade80;}
+.cal-section{background:var(--dark2);border-top:.5px solid var(--darkb);padding:72px 24px;}
+.cal-inner{max-width:900px;margin:0 auto;}
+.cal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px;}
+.cal-card{background:var(--dark);border:.5px solid var(--darkb);border-radius:14px;padding:18px;}
+.cc2h{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.cc2-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cc2-name{font-size:12px;font-weight:700;color:var(--darkt);flex:1;}
+.cc2-badge{font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;flex-shrink:0;}
+.cc2-desc{font-size:11px;color:rgba(201,209,217,.5);line-height:1.55;}
+.cc2-local{font-size:10px;color:rgba(26,158,110,.8);margin-top:6px;font-weight:600;}
+.proof-strip{background:var(--gl);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:52px 24px;}
+.proof-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.proof-stat{text-align:center;}
+.proof-num{font-family:var(--ff);font-size:42px;font-weight:900;color:var(--gd);line-height:1;}
+.proof-lbl{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4;}
+.pricing-section{padding:80px 24px;max-width:960px;margin:0 auto;}
+.tier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:0;}
+.tier-head{border-radius:16px 16px 0 0;padding:20px 20px 16px;border:1px solid var(--border);border-bottom:none;background:var(--white);text-align:center;}
+.tier-head.feat{background:var(--gl);border-color:var(--green);}
+.tier-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;}
+.tier-badge{display:inline-block;font-size:10px;font-weight:700;background:var(--green);color:#fff;padding:3px 10px;border-radius:99px;margin-bottom:8px;text-transform:uppercase;}
+.tier-flags{font-size:16px;letter-spacing:1px;margin-bottom:6px;}
+.tier-name{font-size:14px;font-weight:700;color:var(--ink);}
+.countries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 16px;}
+.col{display:flex;flex-direction:column;}
+.cc{border:1px solid var(--border);border-top:none;padding:11px 14px;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.cc.feat{border-color:var(--green);background:#F6FCF9;}
+.cc:last-child{border-radius:0 0 14px 14px;}
+.cc-left{display:flex;align-items:center;gap:8px;}
+.cc-flag{font-size:17px;flex-shrink:0;}
+.cc-name{font-size:12px;font-weight:500;color:var(--ink);}
+.cc-cur{font-size:10px;color:var(--muted);margin-top:1px;}
+.cc-price{text-align:right;flex-shrink:0;}
+.cc-amt{font-family:var(--ff);font-size:16px;font-weight:900;color:var(--ink);line-height:1;}
+.cc-per{font-size:10px;color:var(--muted);margin-top:1px;}
+.cc-yr{font-size:10px;color:var(--green);font-weight:600;margin-top:2px;}
+.note-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
+.note-card{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--muted);line-height:1.55;border:1px solid var(--border);}
+.note-card.feat{background:var(--gl);border-color:#9FD4BC;color:var(--gd);}
+.family-strip{margin-top:20px;background:var(--al);border:1px solid #F5D08A;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;}
+.fam-icon{font-size:22px;flex-shrink:0;}
+.fam-text{font-size:13px;color:#7A4A05;line-height:1.55;}
+.fam-text strong{font-weight:700;color:var(--ink);}
+.mission{background:var(--ink);padding:96px 24px;}
+.mission-inner{max-width:660px;margin:0 auto;text-align:center;}
+.mission-slogan{font-family:var(--ff);font-size:12px;font-weight:700;font-style:italic;color:rgba(255,255,255,.22);letter-spacing:.22em;text-transform:uppercase;margin-bottom:36px;}
+.mission-h{font-family:var(--ff);font-size:clamp(30px,5vw,52px);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.5px;margin-bottom:28px;}
+.mission-h em{font-style:italic;color:var(--amber);}
+.mission-body{font-size:16px;color:rgba(255,255,255,.5);line-height:1.85;max-width:540px;margin:0 auto;text-align:left;}
+.mission-body p{margin-bottom:16px;}
+.mission-body p:last-child{margin-bottom:0;}
+.mission-body strong{color:rgba(255,255,255,.85);font-weight:600;}
+.mission-cta{display:inline-block;padding:15px 36px;background:var(--green);color:#fff;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;border:none;font-family:var(--fb);margin-top:40px;transition:background .15s;}
+.mission-cta:hover{background:var(--gd);}
+.footer{background:var(--white);border-top:1px solid var(--border);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-brand{font-family:var(--ff);font-size:16px;font-weight:900;color:var(--ink);}
+.footer-brand em{font-style:normal;color:var(--green);}
+.footer-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.footer-links{display:flex;gap:20px;font-size:12px;color:var(--muted);flex-wrap:wrap;}
+.footer-links span{cursor:pointer;transition:color .15s;}
+.footer-links span:hover{color:var(--green);}
+@media(max-width:700px){
+  .steps,.worlds-grid,.acad-grid,.psych-grid,.feat-grid,.prop-grid,.cal-grid,.tier-row,.countries-grid,.note-row{grid-template-columns:1fr 1fr;}
+  .w7-chip,.prop-card.full{grid-column:span 2;}
+  .proof-inner{grid-template-columns:1fr 1fr;}
+  .scholar-tiers,.pf-row{grid-template-columns:repeat(3,1fr);}
+  .nav{padding:10px 16px;}
+  .nav-domain{display:none;}
+}
+@media(max-width:450px){
+  .steps,.acad-grid,.psych-grid,.feat-grid,.prop-grid,.cal-grid,.tier-row,.countries-grid{grid-template-columns:1fr;}
+  .w7-chip,.prop-card.full{grid-column:span 1;}
+  .scholar-tiers{grid-template-columns:1fr;}
+  .pf-row{grid-template-columns:repeat(4,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div><div class="nav-brand">Fino<em>Mundo</em></div><div class="nav-domain">finomundo.world</div></div>
+  <div class="nav-btns">
+    <button class="lb on" onclick="setLang('en')">🇺🇸 EN</button>
+    <button class="lb" onclick="setLang('pt')">🇧🇷 PT</button>
+    <button class="lb" onclick="setLang('es')">🇲🇽 ES</button>
+  </div>
+</div>
+
+<!-- ═══ ENGLISH ═══ -->
+<div class="page on" id="pg-en">
+  <div class="hero">
+    <div class="eyebrow"><div class="edot"></div>Now building · Join the waitlist</div>
+    <h1>Your world.<br><em>Your wealth.</em></h1>
+    <div class="slogan">Learn · Earn · Explore</div>
+    <p class="hero-sub">FinoMundo teaches kids and adults the money skills school never did — through gamified daily lessons in English, Portuguese, and Spanish. Master the fundamentals. Unlock real paper trading. Learn how your emotions destroy accounts before you risk a single dollar.</p>
+    <div class="cta-group">
+      <div class="cta-row"><input class="cta-input" type="email" placeholder="Your email address" id="em-en"><button class="cta-btn" onclick="join('en')">Join the waitlist</button></div>
+      <span class="cta-note" id="note-en">World 1 is free forever. No credit card needed.</span>
+      <div class="wl-row"><div class="avs"><div class="av" style="background:#E1F5EE;color:#0F6E56;">M</div><div class="av" style="background:#EEEDFE;color:#3C3489;">S</div><div class="av" style="background:#FAEEDA;color:#633806;">J</div><div class="av" style="background:#FAECE7;color:#712B13;">A</div></div><span>247 families already waiting</span></div>
+    </div>
+  </div>
+  <div class="phone-wrap"><div class="phone"><div class="p-notch"></div><div class="p-screen">
+    <div class="p-hd"><div class="p-logo">Fino<em>Mundo</em></div><div class="p-streak">🔥 7 days</div></div>
+    <div class="p-xp"><div class="p-xp-f"></div></div>
+    <div class="p-chart-bar"><div class="p-bar" style="height:42%;background:#ef5350;"></div><div class="p-bar" style="height:58%;background:#26a69a;"></div><div class="p-bar" style="height:36%;background:#ef5350;"></div><div class="p-bar" style="height:72%;background:#26a69a;"></div><div class="p-bar" style="height:82%;background:#26a69a;"></div><div class="p-bar" style="height:66%;background:#26a69a;"></div><div class="p-bar" style="height:90%;background:#26a69a;"></div><div class="p-bar" style="height:74%;background:#ef5350;"></div><div class="p-bar" style="height:88%;background:#26a69a;"></div><div class="p-bar" style="height:96%;background:#26a69a;"></div></div>
+    <div class="p-card"><div class="p-world">📊 World 7 — Trading Academy</div><div class="p-q">Fibonacci 0.618 detected on BRL/USD. What does this mean for a long setup?</div><div class="p-opts"><div class="p-opt">Exit the trade now</div><div class="p-opt win">High-probability reversal zone ✓</div><div class="p-opt">Ignore — just a number</div></div></div>
+    <div class="p-coins"><div class="coin"></div>340 FinoCoins · Readiness Score: 78</div>
+  </div></div></div>
+  <div class="div-bar">Building for <em>1.1 billion people</em> across 3 languages · 19 countries · finomundo.world</div>
+  <div class="section">
+    <div class="s-eye">How it works</div>
+    <div class="s-title">Learn like a game.<br>Think like an <em>investor.</em></div>
+    <div class="steps">
+      <div class="step" data-n="1"><div class="step-title">5-minute daily lessons</div><div class="step-body">Bite-sized quizzes on real financial concepts — saving, investing, business, economics — adapted to your age, language, and country. Pass 70% to advance. Review Mode activates on failure — no 24-hour lockouts.</div></div>
+      <div class="step" data-n="2"><div class="step-title">Earn FinoCoins</div><div class="step-body">Score 90%+ on quizzes and earn 100 FC bonus. Use FinoCoins to open long-term paper investment positions, unlock content, and climb the global leaderboard. Your coins reflect your mastery.</div></div>
+      <div class="step" data-n="3"><div class="step-title">Unlock the Trading Academy</div><div class="step-body">Complete all 6 worlds and the full Trading Academy opens — a professional paper trading terminal with drawing tools, psychology gates, an economic calendar, and a monthly prop firm scholarship.</div></div>
+    </div>
+  </div>
+  <div class="worlds-strip"><div class="worlds-inner">
+    <div class="s-eye">The curriculum</div>
+    <div class="s-title">6 worlds of fundamentals.<br>Then the real thing.</div>
+    <div class="worlds-grid">
+      <div class="w-chip"><div class="w-icon">💰</div><div><div class="w-name">Saving &amp; Spending</div><div class="w-desc">Budgets, needs vs wants, 50/30/20 rule, your first savings goal</div><div class="w-free">Free forever · Ages 8+</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏦</div><div><div class="w-name">Banks &amp; Interest</div><div class="w-desc">Compound interest, savings accounts, Rule of 72, fractional reserve banking</div></div></div>
+      <div class="w-chip"><div class="w-icon">📈</div><div><div class="w-name">Stocks &amp; Investing</div><div class="w-desc">Stocks, ETFs, dividends, DRIP, REITs, DCA, P/E — 18 lessons across 6 chapters</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏪</div><div><div class="w-name">Running a Business</div><div class="w-desc">Revenue, profit, supply &amp; demand, pricing, entrepreneurial mindset</div></div></div>
+      <div class="w-chip"><div class="w-icon">🌍</div><div><div class="w-name">Global Economy</div><div class="w-desc">Inflation, exchange rates, Fed/BCB/Banxico, economic cycles — why BRL/USD moves when the Fed acts</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏠</div><div><div class="w-name">Real Estate &amp; Loans</div><div class="w-desc">Credit scores, mortgages, good vs bad debt, renting vs buying — the real math</div></div></div>
+      <div class="w7-chip"><div class="w7-icon">📊</div><div><div class="w7-name">World 7 ⭐ — Trading Academy</div><div class="w7-desc">Complete all 6 worlds to unlock. 24 lessons across 7 chapters — Reading the Market, Advanced Technical (ORB, AMD, Fibonacci, Order Flow, Supply &amp; Demand), Market Types, Trading Psychology (6 lessons including 2-loss rule and pre-trade checklist), Trading Sessions, and Risk &amp; Scaling. Then paper trade everything you learned with zero real money at risk.</div><div class="w7-markets"><span class="w7-mkt">📈 Stocks</span><span class="w7-mkt">₿ Crypto</span><span class="w7-mkt">💱 Forex</span><span class="w7-mkt">📋 Options</span><span class="w7-mkt">⚡ Futures</span><span class="w7-mkt">🇧🇷 BRL/USD</span><span class="w7-mkt">🇲🇽 MXN/USD</span></div><div class="w7-badge">Subscription only · Unlocks after all 6 worlds</div></div></div>
+    </div>
+  </div></div>
+  <div class="academy-section"><div class="academy-inner">
+    <div class="acad-eyebrow">World 7 — Trading Academy</div>
+    <div class="acad-title">The only app that teaches you<br>to actually <em>trade.</em></div>
+    <div class="acad-sub">Most financial apps stop at theory. FinoMundo builds you through 6 worlds of fundamentals, then opens a full professional paper trading terminal — complete with drawing tools, economic calendar, psychology gates, session clocks, a prop firm readiness score, and a monthly scholarship.</div>
+    <div class="acad-grid">
+      <div class="acad-card hl"><div class="ac-icon">📊</div><div class="ac-title">TradingView-style terminal</div><div class="ac-desc">Real candlestick charts with 7 timeframes (1m to 1W), Heikin Ashi, bar charts, area charts. MA, EMA, RSI, MACD, Bollinger Bands, VWAP, and a volume toggle showing color-coded bars. The exact tools professional traders use — explained as you use them.</div></div>
+      <div class="acad-card hl"><div class="ac-icon">📐</div><div class="ac-title">Auto-placed drawing tools</div><div class="ac-desc">Fibonacci retracement with algorithmic swing detection — automatically draws all 7 levels and highlights the 0.618 golden ratio with an explanation. Supply and demand zones auto-placed from institutional candle clusters. Auto-detected trend lines. Every tool has an educational tooltip explaining the concept.</div></div>
+      <div class="acad-card"><div class="ac-icon">🧠</div><div class="ac-title">Trader personality survey</div><div class="ac-desc">6-question assessment before you trade identifies your risk tolerance, time availability, and ideal market type — scalper, intraday, or swing trader. Permanent result tied to your profile. Required gate before the terminal opens.</div></div>
+      <div class="acad-card"><div class="ac-icon">📰</div><div class="ac-title">Daily Market Brief — AI powered</div><div class="ac-desc">Every day Claude analyzes your open positions, explains why they moved, adds a trading psychology note per position, and tells you what to watch tomorrow. Links each position to the exact curriculum lesson that covers it.</div></div>
+      <div class="acad-card gn"><div class="ac-icon">📅</div><div class="ac-title">Economic calendar — translated</div><div class="ac-desc">12 high-impact events with plain-language explanations in your language, times in your local timezone, LatAm relevance notes, and automatic position size restrictions on red folder events. NFP, CPI, Fed, BCB Selic, Banxico, GDP, oil inventory, and more.</div></div>
+      <div class="acad-card"><div class="ac-icon">📈</div><div class="ac-title">Long-term investing terminal</div><div class="ac-desc">Separate portfolio tab with real dividend yields, P/E, beta, and market cap. Open positions with FinoCoins earned from high quiz scores. Write an investment thesis and earn bonus coins. DRIP simulation built in. Investor of the Quarter award every 3 months.</div></div>
+    </div>
+    <div class="acad-lock"><div class="al-icon">🔒</div><div class="al-text"><div class="al-title">Earned, not given — the Trading Academy unlock</div><div class="al-desc">Complete all 6 worlds to reach the Trading Academy. This is not gatekeeping — it is how real financial education works. You would not hand someone car keys without teaching them to drive. The terminal is more valuable because you earned it.</div><div class="al-req"><span class="al-badge">✓ Complete all 6 worlds</span><span class="al-badge">✓ 70% pass threshold</span><span class="al-badge">✓ Trader personality survey</span><span class="al-badge">✓ Active subscription</span></div></div></div>
+    <div class="acad-pass"><div class="ap-title">📚 Review Mode — fail forward, not backward</div><div class="ap-desc">Miss a quiz 3 times? Review Mode activates with targeted cards explaining exactly what you missed. Complete the review and retry immediately — no 24-hour wait. The cooldown only activates after the review attempt also fails.</div></div>
+  </div></div>
+  <div class="psych-section"><div class="psych-inner">
+    <div class="acad-eyebrow">Trading Psychology</div>
+    <div class="acad-title">The thing that actually<br>destroys accounts is <em>you.</em></div>
+    <div class="acad-sub">Most trading apps teach mechanics. FinoMundo teaches the one thing that separates consistently profitable traders from everyone else — their relationship with loss, discipline, and emotional state. These are not optional settings. They are gates built into every single trade.</div>
+    <div class="psych-grid">
+      <div class="pc"><div class="pc-icon">🧠</div><div class="pc-title">Emotion tagger — before every trade</div><div class="pc-desc">Before every trade you select your emotional state: Calm, Focused, Anxious, Greedy, or Revenge. Anxious, Greedy, or Revenge trigger a warning and a chance to step back. Every state is logged to reveal patterns in your journal over time.</div></div>
+      <div class="pc"><div class="pc-icon">✅</div><div class="pc-title">Pre-trade checklist — 3 questions</div><div class="pc-desc">Is this your defined setup? Did you check the higher timeframe? Are you in a clear headspace? Three questions before every execution. One "No" triggers a caution. Professional discipline built as a daily habit — not a lecture.</div></div>
+      <div class="pc am"><div class="pc-icon">🟢</div><div class="pc-title">Cold head indicator</div><div class="pc-desc">A persistent header indicator showing your current headspace — Clear, Distracted, or Emotional. Tap to update any time. Professionals check their headspace before market open. FinoMundo makes it the first thing you see every session.</div></div>
+      <div class="pc rd"><div class="pc-icon">🛑</div><div class="pc-title">2-loss daily lockout</div><div class="pc-desc">After two losing trades the terminal locks automatically. No revenge trading. No escalation. Manual override exists — but logs the decision, warns that traders who override have a 3× higher loss rate for the rest of the day, and requires explicit confirmation. Resets at midnight.</div></div>
+      <div class="pc"><div class="pc-icon">📉</div><div class="pc-title">Loss Debrief — learn from every mistake</div><div class="pc-desc">Close a losing trade and an instant debrief shows exactly what the chart was telling you at entry — trend direction, RSI, higher timeframe conflict. References both the Trading Psychology lesson and the Top-down Analysis lesson. No loss goes to waste.</div></div>
+      <div class="pc"><div class="pc-icon">📔</div><div class="pc-title">No-trade journal</div><div class="pc-desc">Log why you chose NOT to trade today — 6 presets including "No valid setup," "High-impact news event — staying out," and "Not in the right headspace." Every entry adds 10 points to your Prop Firm Readiness Score. Sitting on your hands is a professional skill.</div></div>
+    </div>
+    <div class="psych-quote"><div class="pq-icon">📖</div><div><div class="pq-text">"Your relationship with losing defines your entire trading career. The trader who masters losing will outlast everyone else."</div><div class="pq-attr">— Inspired by Tom Hougaard, "The Best Loser Wins" · Referenced throughout the World 7 Trading Psychology curriculum</div></div></div>
+  </div></div>
+  <div class="prop-section"><div class="prop-inner">
+    <div class="acad-eyebrow">Prop Firms &amp; Scholarship</div>
+    <div class="acad-title">We pay for your first<br><em>real evaluation.</em></div>
+    <div class="acad-sub">Every month FinoMundo pays for a real prop firm sim funded account evaluation for the top paper trader. Winner chooses the firm and account size. Every quarter the top long-term investor receives 10,000 FinoCoins and $25 via Wise toward their first real fractional share.</div>
+    <div class="prop-grid">
+      <div class="prop-card gn"><div class="pc2-icon">🎯</div><div class="pc2-title">Prop Firm Readiness Score</div><div class="pc2-desc">After 30 days of activity your terminal generates a 0–100 readiness score across 6 metrics: win rate (25pts), average RR (20pts), 2-loss rule adherence (20pts), emotional consistency (15pts), checklist completion (10pts), and no-trade discipline (10pts). Under 60 = keep learning. 60–79 = building discipline. 80+ = evaluation ready.</div><div class="sim-note"><div class="sim-text">⚠️ A "50K sim funded account" means $50,000 in simulated buying power — not your money at risk. Your actual exposure is the drawdown limit (~$2,000–$6,000 depending on account size) plus the evaluation fee. Explained clearly on every prop firm card inside the app.</div></div></div>
+      <div class="prop-card gd"><div class="pc2-icon">🎓</div><div class="pc2-title">FinoMundo Scholarship</div><div class="pc2-desc">Top paper trader of the month receives a real prop firm evaluation paid by FinoMundo. Winner chooses the firm and sim funded account size — 50K, 100K, or 150K — based on performance metrics. Anyone can win. Winners under 18 have the cash award held until they turn 18. Certificate and FinoCoins are immediate regardless of age.</div><div class="scholar-tiers"><div class="st-card" style="border-color:rgba(26,158,110,.4);background:rgba(26,158,110,.06);"><div class="st-val" style="color:#4ade80;">50K sim</div><div class="st-reqs">Win rate 60%+ · 2-loss adherence 80%+</div></div><div class="st-card" style="border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.06);"><div class="st-val" style="color:var(--amber);">100K sim</div><div class="st-reqs">WR 65%+ · RR 1:1.8+ · 2-loss 90%+</div></div><div class="st-card" style="border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.04);"><div class="st-val" style="color:var(--gold);">150K sim</div><div class="st-reqs">WR 70%+ · RR 1:2.0+ · 2-loss 95%+</div></div></div></div>
+      <div class="prop-card full am"><div class="pc2-icon">🏢</div><div class="pc2-title">7 Prop Firms — Fully Explained in the App</div><div class="pc2-desc" style="margin-bottom:14px;">Every major futures prop firm is covered — translated highlights in EN/PT/ES, drawdown structures in plain language, real dollar exposure clarified, country eligibility by flag, and sim funded account terminology throughout. No confusion between simulated buying power and real capital at risk. The app teaches you exactly what a prop firm is and which firms are available in your country before you ever consider purchasing an evaluation.</div><div class="pf-row"><div class="pf-chip pk">⭐ Alpha Futures<br>Founder's Pick</div><div class="pf-chip">Apex Trader<br>Funding</div><div class="pf-chip">Tradeify</div><div class="pf-chip">Take Profit<br>Trader</div><div class="pf-chip">The Futures<br>Desk</div><div class="pf-chip">Lucid<br>Trading</div><div class="pf-chip">Topstep<br>12+ yrs</div></div></div>
+    </div>
+  </div></div>
+  <div class="feat-section"><div class="feat-inner">
+    <div class="s-eye">Terminal features</div>
+    <div class="s-title">Every tool a professional uses.<br><em>Explained</em> as you use it.</div>
+    <div class="s-sub">Every drawing tool in the terminal automatically shows a tooltip explaining what it is, why professionals use it, and what to look for. FinoMundo does not just show you the tools — it teaches you through them.</div>
+    <div class="feat-grid">
+      <div class="fc dk"><div class="fc-icon">𝛷</div><div class="fc-title w">Fibonacci — auto-placed</div><div class="fc-desc w">Swing high and low detected algorithmically from real candle data. All 7 levels drawn automatically — 0.000 through 1.000. The 0.618 golden ratio highlighted with an explanation of why institutional traders watch it. Drawn correctly from swing high to swing low every time.</div><div class="fc-tags"><span class="fc-tag w">Algo swing detection</span><span class="fc-tag w">0.618 ✦ highlighted</span></div></div>
+      <div class="fc dk"><div class="fc-icon">▬</div><div class="fc-title w">Supply &amp; demand zones</div><div class="fc-desc w">Supply zone auto-detected from the last significant bearish candle cluster where institutional sellers were active. Demand zone from the last significant bullish cluster. Both shown as colored rectangles with educational tooltips explaining why price has memory here.</div><div class="fc-tags"><span class="fc-tag w">Red = supply</span><span class="fc-tag w">Green = demand</span></div></div>
+      <div class="fc dk"><div class="fc-icon">↗</div><div class="fc-title w">Auto trend lines</div><div class="fc-desc w">Algorithm connects the two most significant swing lows for uptrends or swing highs for downtrends. Extended to the right edge. Green for uptrend, red for downtrend. Tooltip explains higher highs and higher lows.</div><div class="fc-tags"><span class="fc-tag w">Swing detection</span><span class="fc-tag w">Color-coded</span></div></div>
+      <div class="fc"><div class="fc-icon">─</div><div class="fc-title">Key horizontal level</div><div class="fc-desc">Auto-detected from the median price of the last 20 candles — where the most trading activity recently occurred. Shown as a cyan dashed line labeled KEY LEVEL with an explanation of horizontal support and resistance.</div><div class="fc-tags"><span class="fc-tag">Auto-detected</span><span class="fc-tag">Labeled</span></div></div>
+      <div class="fc"><div class="fc-icon">📊</div><div class="fc-title">Volume bars toggle</div><div class="fc-desc">VOL toggle shows and hides color-coded volume bars below the main chart. Green for up-volume candles, red for down-volume. Volume confirms or denies every price move — treated as the confirmation tool it is, not an afterthought.</div><div class="fc-tags"><span class="fc-tag">One tap toggle</span><span class="fc-tag">Green/red coded</span></div></div>
+      <div class="fc"><div class="fc-icon">🕐</div><div class="fc-title">Session clock strip</div><div class="fc-desc">Live Asian, London, and New York session indicators with times converted to your local timezone. London-New York overlap flagged as Maximum Volume. Teaches session structure as you trade — not as a separate theory lesson.</div><div class="fc-tags"><span class="fc-tag">Your local time</span><span class="fc-tag">Overlap alert</span></div></div>
+    </div>
+  </div></div>
+  <div class="cal-section"><div class="cal-inner">
+    <div class="acad-eyebrow">Economic Calendar</div>
+    <div class="acad-title" style="font-size:clamp(26px,3.5vw,42px);">12 market-moving events.<br>Explained in your language.</div>
+    <div class="acad-sub">Every high-impact event includes a plain-language explanation, typical market move, pro tip, LatAm relevance note, and time in your local timezone. Red folder events automatically restrict position size — professionals never fullport into news events.</div>
+    <div class="cal-grid">
+      <div class="cal-card"><div class="cc2h"><div class="cc2-dot" style="background:#ef5350;"></div><div class="cc2-name">Non-Farm Payrolls (NFP)</div><div class="cc2-badge" style="background:rgba(239,83,80,.15);color:#ef5350;">🔴 High</div></div><div class="cc2-desc">Shows how many jobs were added or lost in the US last month. More jobs = stronger dollar = BRL/USD and MXN/USD move significantly. The most-watched economic report in forex trading every single month.</div><div class="cc2-local">⚠️ Position size auto-restricted · 30 min window · 🇧🇷🇲🇽 LatAm relevance explained</div></div>
+      <div class="cal-card"><div class="cc2h"><div class="cc2-dot" style="background:#ef5350;"></div><div class="cc2-name">BCB Selic Rate (Brazil)</div><div class="cc2-badge" style="background:rgba(239,83,80,.15);color:#ef5350;">🔴 High</div></div><div class="cc2-desc">Brazil's benchmark interest rate. Directly affects BRL/USD, B3 stocks, and credit costs across Brazil. One of the highest benchmark rates in the world — essential for any Brazilian trader.</div><div class="cc2-local">🇧🇷 Full LatAm note · Comparison to Fed and Banxico included</div></div>
+      <div class="cal-card"><div class="cc2h"><div class="cc2-dot" style="background:#ef5350;"></div><div class="cc2-name">Federal Reserve Rate Decision</div><div class="cc2-badge" style="background:rgba(239,83,80,.15);color:#ef5350;">🔴 High</div></div><div class="cc2-desc">The Fed sets the benchmark rate affecting every financial market on earth. Rate hike = stronger dollar = weaker LatAm currencies. When the Fed moves, BCB and Banxico typically follow within one or two meetings.</div><div class="cc2-local">⚠️ Largest restriction event · Press conference stop-hunt explained</div></div>
+      <div class="cal-card"><div class="cc2h"><div class="cc2-dot" style="background:#FF9800;"></div><div class="cc2-name">EIA Crude Oil Inventory</div><div class="cc2-badge" style="background:rgba(255,152,0,.15);color:#FF9800;">🟠 Medium</div></div><div class="cc2-desc">Critical for Brazilian traders — Petrobras moves with oil prices. Falling inventories = higher oil = stronger BRL. Mexican traders watch this for Pemex and peso impact. Every Wednesday 10:30 AM EST.</div><div class="cc2-local">🇧🇷🇲🇽 Full commodity relevance note included</div></div>
+    </div>
+  </div></div>
+  <div class="proof-strip"><div class="proof-inner">
+    <div class="proof-stat"><div class="proof-num">1.1B</div><div class="proof-lbl">People across our 3 languages</div></div>
+    <div class="proof-stat"><div class="proof-num">44</div><div class="proof-lbl">Lessons across 7 worlds including the full Trading Academy</div></div>
+    <div class="proof-stat"><div class="proof-num">200+</div><div class="proof-lbl">Glossary terms in English, Portuguese &amp; Spanish</div></div>
+    <div class="proof-stat"><div class="proof-num">19</div><div class="proof-lbl">Countries with local-currency mission pricing</div></div>
+  </div></div>
+  <div class="section">
+    <div class="s-eye">Built to keep you coming back</div>
+    <div class="s-title">Six things that make<br>FinoMundo <em>stick.</em></div>
+    <div class="steps">
+      <div class="step" data-n="1"><div class="step-title">Goal-anchored journey</div><div class="step-body">Tell us why you are here on day one — save money, learn to trade, teach your kids. Every world references your goal. "You are 3 worlds from the Trading Academy" hits different when it is your goal, not ours.</div></div>
+      <div class="step" data-n="2"><div class="step-title">Smart push notifications</div><div class="step-body">We do not send generic alerts. When BRL/USD moves 2% in a day, you get a notification explaining why and linking to the exact lesson that covers it. Real market events. Real learning moments.</div></div>
+      <div class="step" data-n="3"><div class="step-title">Review Mode — not lockout</div><div class="step-body">Fail a quiz 3 times? Targeted review cards activate for exactly what you missed. Retry immediately. You learn more from understanding your mistake than from waiting 24 hours.</div></div>
+      <div class="step" data-n="4"><div class="step-title">Daily Market Brief</div><div class="step-body">Every day in the Trading Academy you receive an AI brief explaining why your positions moved, a psychology note per position, and what to watch tomorrow. Claude-powered. Every loss and gain explained in your language.</div></div>
+      <div class="step" data-n="5"><div class="step-title">Trade of the Week</div><div class="step-body">Every week the best-documented community trade gets pinned in chat — setup, reasoning, outcome, and a discipline note. Organic learning from real peers in your language.</div></div>
+      <div class="step" data-n="6"><div class="step-title">Prop Firm Readiness Score</div><div class="step-body">A live 0–100 score updated daily across 6 discipline metrics. Eligible prop firms shown by your country flag. A concrete goal beyond the leaderboard — with real financial stakes attached.</div></div>
+    </div>
+  </div>
+  <div class="pricing-section">
+    <div class="s-eye">Pricing</div>
+    <div class="s-title">Same app. Fair price<br>for every country.</div>
+    <div class="s-sub">Every country pays in its own currency at a price that reflects local wages — not US dollars. Same full app everywhere including the Trading Academy. English-speaking markets are priced to reflect the premium trading curriculum. LatAm markets are priced to reflect the mission.</div>
+    <div class="tier-row">
+      <div class="tier-head"><div class="tier-label">Global</div><div class="tier-flags">🇺🇸 🇨🇦 🇬🇧 🇦🇺 🇪🇺</div><div class="tier-name">Standard markets</div></div>
+      <div class="tier-head feat"><div class="tier-badge">Mission pricing 🌱</div><div class="tier-flags">🇧🇷 🇨🇴 🇵🇪 🇦🇷 🇨🇱 🇻🇪 🇪🇨</div><div class="tier-name">South America</div></div>
+      <div class="tier-head"><div class="tier-label">Mission pricing 🌱</div><div class="tier-flags">🇲🇽 🇬🇹 🇭🇳 🇸🇻 🇳🇮 🇨🇷 🇵🇦</div><div class="tier-name">Mexico &amp; Central America</div></div>
+    </div>
+    <div class="countries-grid">
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇺🇸</div><div><div class="cc-name">United States</div><div class="cc-cur">US Dollar · USD</div></div></div><div class="cc-price"><div class="cc-amt">$5.99</div><div class="cc-per">/month</div><div class="cc-yr">$46/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇦</div><div><div class="cc-name">Canada</div><div class="cc-cur">Canadian Dollar · CAD</div></div></div><div class="cc-price"><div class="cc-amt">CA$7.99</div><div class="cc-per">/month</div><div class="cc-yr">CA$61/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇧</div><div><div class="cc-name">United Kingdom</div><div class="cc-cur">Pound Sterling · GBP</div></div></div><div class="cc-price"><div class="cc-amt">£4.49</div><div class="cc-per">/month</div><div class="cc-yr">£34/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇦🇺</div><div><div class="cc-name">Australia</div><div class="cc-cur">Australian Dollar · AUD</div></div></div><div class="cc-price"><div class="cc-amt">A$8.99</div><div class="cc-per">/month</div><div class="cc-yr">A$68/year</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇪🇺</div><div><div class="cc-name">Europe</div><div class="cc-cur">Euro · EUR</div></div></div><div class="cc-price"><div class="cc-amt">€5.49</div><div class="cc-per">/month</div><div class="cc-yr">€42/year</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brazil</div><div class="cc-cur">Real Brasileiro · BRL</div></div></div><div class="cc-price"><div class="cc-amt">R$10</div><div class="cc-per">/month</div><div class="cc-yr">R$60/year</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇴</div><div><div class="cc-name">Colombia</div><div class="cc-cur">Peso Colombiano · COP</div></div></div><div class="cc-price"><div class="cc-amt">COP 8.000</div><div class="cc-per">/month</div><div class="cc-yr">COP 48.000/year</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇵🇪</div><div><div class="cc-name">Peru</div><div class="cc-cur">Sol Peruano · PEN</div></div></div><div class="cc-price"><div class="cc-amt">S/7.50</div><div class="cc-per">/month</div><div class="cc-yr">S/45/year</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-cur">Peso Argentino · ARS</div></div></div><div class="cc-price"><div class="cc-amt">AR$1.800</div><div class="cc-per">/month</div><div class="cc-yr">AR$10.800/year</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇱</div><div><div class="cc-name">Chile</div><div class="cc-cur">Peso Chileno · CLP</div></div></div><div class="cc-price"><div class="cc-amt">CLP 1.800</div><div class="cc-per">/month</div><div class="cc-yr">CLP 10.800/year</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇪🇨</div><div><div class="cc-name">Ecuador</div><div class="cc-cur">US Dollar · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/month</div><div class="cc-yr">$12/year</div></div></div>
+        <div class="cc feat" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇻🇪</div><div><div class="cc-name">Venezuela</div><div class="cc-cur">US Dollar · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/month</div><div class="cc-yr">$12/year</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇲🇽</div><div><div class="cc-name">Mexico</div><div class="cc-cur">Peso Mexicano · MXN</div></div></div><div class="cc-price"><div class="cc-amt">MX$45</div><div class="cc-per">/month</div><div class="cc-yr">MX$249/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇹</div><div><div class="cc-name">Guatemala</div><div class="cc-cur">Quetzal · GTQ</div></div></div><div class="cc-price"><div class="cc-amt">Q15</div><div class="cc-per">/month</div><div class="cc-yr">Q90/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇭🇳</div><div><div class="cc-name">Honduras</div><div class="cc-cur">Lempira · HNL</div></div></div><div class="cc-price"><div class="cc-amt">L50</div><div class="cc-per">/month</div><div class="cc-yr">L300/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇸🇻</div><div><div class="cc-name">El Salvador</div><div class="cc-cur">US Dollar · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/month</div><div class="cc-yr">$12/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇳🇮</div><div><div class="cc-name">Nicaragua</div><div class="cc-cur">Córdoba · NIO</div></div></div><div class="cc-price"><div class="cc-amt">C$72</div><div class="cc-per">/month</div><div class="cc-yr">C$432/year</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇷</div><div><div class="cc-name">Costa Rica</div><div class="cc-cur">Colón · CRC</div></div></div><div class="cc-price"><div class="cc-amt">₡1.100</div><div class="cc-per">/month</div><div class="cc-yr">₡6.600/year</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇵🇦</div><div><div class="cc-name">Panamá</div><div class="cc-cur">Balboa / USD · PAB</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/month</div><div class="cc-yr">$12/year</div></div></div>
+      </div>
+    </div>
+    <div class="note-row">
+      <div class="note-card">English-speaking markets are priced to reflect the full Trading Academy — professional chart tools, auto-placed drawing tools, prop firm education, psychology system, economic calendar, and monthly scholarship.</div>
+      <div class="note-card feat">Brazil accepts Pix. All South American prices charged in local currency via App Store and Google Play. Mission pricing reflects purchasing power parity — the same fair fraction of local wages in every country.</div>
+      <div class="note-card">Mexico supports OXXO Pay. Ecuador, El Salvador, Venezuela, and Panama use USD officially. Central America priced at the same mission-pricing standard as South America.</div>
+    </div>
+    <div class="family-strip"><div class="fam-icon">👨‍👩‍👧‍👦</div><div class="fam-text">The <strong>Family Plan</strong> covers up to 4 children at <strong>2.5× the individual price</strong> in any currency. One account, four kids, every world unlocked including the Trading Academy. <strong>School licensing at 50% off per student — minimum 10 students.</strong> Contact us at finomundo.world.</div></div>
+  </div>
+  <div class="mission"><div class="mission-inner">
+    <div class="mission-slogan">Tu mundo · Tu riqueza</div>
+    <h2 class="mission-h">Financial education belongs<br>to <em>everyone.</em></h2>
+    <div class="mission-body">
+      <p>FinoMundo was built for every child and adult who deserves access to financial education — regardless of where they were born, what language they speak, or what school they had access to.</p>
+      <p>It was inspired specifically by the <strong>600+ million people across Latin America and the Iberian Peninsula</strong> who have historically been underserved by financial tools built exclusively in English for English-speaking markets.</p>
+      <p>But the truth we discovered in building it is this: <strong>financial illiteracy has no borders.</strong> The US, Canada, UK, and every other country in the world has people who never learned what a stock is, how interest works, or why their currency weakens when the Fed raises rates.</p>
+      <p>FinoMundo exists for all of them. It started in LatAm because that is where the need was most acute and most ignored. <strong>It will not end there.</strong></p>
+    </div>
+    <button class="mission-cta" onclick="document.getElementById('em-en').scrollIntoView({behavior:'smooth'})">Join the waitlist — it's free</button>
+  </div></div>
+  <div class="footer"><div><div class="footer-brand">Fino<em>Mundo</em></div><div class="footer-sub">finomundo.world</div></div><div class="footer-links"><span onclick="setLang('en')">🇺🇸 English</span><span onclick="setLang('pt')">🇧🇷 Português</span><span onclick="setLang('es')">🇲🇽 Español</span><span onclick="openPrivacy()">Privacy</span><span>Contact</span></div></div>
+</div>
+
+<!-- ═══ PORTUGUÊS ═══ -->
+<div class="page" id="pg-pt">
+  <div class="hero">
+    <div class="eyebrow"><div class="edot"></div>Em construção · Entre na lista</div>
+    <h1>Seu mundo.<br><em>Sua riqueza.</em></h1>
+    <div class="slogan">Aprender · Ganhar · Explorar</div>
+    <p class="hero-sub">O FinoMundo ensina às crianças e adultos as habilidades financeiras que a escola nunca ensinou — por meio de lições gamificadas diárias em inglês, português e espanhol. Domine os fundamentos. Desbloqueie o paper trading real. Aprenda como suas emoções destroem contas antes de arriscar um único real.</p>
+    <div class="cta-group">
+      <div class="cta-row"><input class="cta-input" type="email" placeholder="Seu endereço de e-mail" id="em-pt"><button class="cta-btn" onclick="join('pt')">Entrar na lista</button></div>
+      <span class="cta-note" id="note-pt">O Mundo 1 é gratuito para sempre. Sem cartão de crédito.</span>
+      <div class="wl-row"><div class="avs"><div class="av" style="background:#E1F5EE;color:#0F6E56;">M</div><div class="av" style="background:#EEEDFE;color:#3C3489;">S</div><div class="av" style="background:#FAEEDA;color:#633806;">J</div><div class="av" style="background:#FAECE7;color:#712B13;">A</div></div><span>247 famílias já aguardando</span></div>
+    </div>
+  </div>
+  <div class="phone-wrap"><div class="phone"><div class="p-notch"></div><div class="p-screen">
+    <div class="p-hd"><div class="p-logo">Fino<em>Mundo</em></div><div class="p-streak">🔥 7 dias</div></div>
+    <div class="p-xp"><div class="p-xp-f"></div></div>
+    <div class="p-chart-bar"><div class="p-bar" style="height:42%;background:#ef5350;"></div><div class="p-bar" style="height:58%;background:#26a69a;"></div><div class="p-bar" style="height:36%;background:#ef5350;"></div><div class="p-bar" style="height:72%;background:#26a69a;"></div><div class="p-bar" style="height:82%;background:#26a69a;"></div><div class="p-bar" style="height:66%;background:#26a69a;"></div><div class="p-bar" style="height:90%;background:#26a69a;"></div><div class="p-bar" style="height:74%;background:#ef5350;"></div><div class="p-bar" style="height:88%;background:#26a69a;"></div><div class="p-bar" style="height:96%;background:#26a69a;"></div></div>
+    <div class="p-card"><div class="p-world">📊 Mundo 7 — Academia de Trading</div><div class="p-q">Fibonacci 0.618 detectado no BRL/USD. O que isso significa para uma entrada comprada?</div><div class="p-opts"><div class="p-opt">Sair do trade agora</div><div class="p-opt win">Zona de alta probabilidade de reversão ✓</div><div class="p-opt">Ignorar — é só um número</div></div></div>
+    <div class="p-coins"><div class="coin"></div>340 FinoCoins · Pontuação de Prontidão: 78</div>
+  </div></div></div>
+  <div class="div-bar">Construindo para <em>1,1 bilhão de pessoas</em> em 3 idiomas · 19 países · finomundo.world</div>
+  <div class="section">
+    <div class="s-eye">Como funciona</div>
+    <div class="s-title">Aprenda como um jogo.<br>Pense como um <em>investidor.</em></div>
+    <div class="steps">
+      <div class="step" data-n="1"><div class="step-title">Lições diárias de 5 minutos</div><div class="step-body">Quizzes rápidos sobre conceitos financeiros reais — poupança, investimentos, negócios, economia — adaptados à sua idade, idioma e país. Passe com 70% para avançar. O Modo Revisão ativa em caso de falha — sem bloqueios de 24 horas.</div></div>
+      <div class="step" data-n="2"><div class="step-title">Ganhe FinoCoins</div><div class="step-body">Tire 90%+ nos quizzes e ganhe 100 FC de bônus. Use FinoCoins para abrir posições de investimento de longo prazo, desbloquear conteúdo e subir no ranking global. Suas moedas refletem seu domínio.</div></div>
+      <div class="step" data-n="3"><div class="step-title">Desbloqueie a Academia de Trading</div><div class="step-body">Complete todos os 6 mundos e a Academia de Trading completa se abre — terminal profissional com ferramentas de desenho, gates de psicologia, calendário econômico e bolsa mensal de prop firm.</div></div>
+    </div>
+  </div>
+  <div class="worlds-strip"><div class="worlds-inner">
+    <div class="s-eye">O currículo</div>
+    <div class="s-title">6 mundos de fundamentos.<br>Depois a coisa real.</div>
+    <div class="worlds-grid">
+      <div class="w-chip"><div class="w-icon">💰</div><div><div class="w-name">Poupar e Gastar</div><div class="w-desc">Orçamentos, necessidades vs desejos, regra 50/30/20, seu primeiro objetivo de poupança</div><div class="w-free">Gratuito para sempre · A partir de 8 anos</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏦</div><div><div class="w-name">Bancos e Juros</div><div class="w-desc">Juros compostos, contas de poupança, Regra de 72, reserva fracionária</div></div></div>
+      <div class="w-chip"><div class="w-icon">📈</div><div><div class="w-name">Ações e Investimentos</div><div class="w-desc">Ações, ETFs, dividendos, DRIP, FIIs, DCA, P/L — 18 lições em 6 capítulos incluindo estratégias de longo prazo</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏪</div><div><div class="w-name">Gerindo um Negócio</div><div class="w-desc">Receita, lucro, oferta e demanda, precificação, mentalidade empreendedora</div></div></div>
+      <div class="w-chip"><div class="w-icon">🌍</div><div><div class="w-name">Economia Global</div><div class="w-desc">Inflação, câmbio, Fed/BCB/Banxico, ciclos econômicos — por que o BRL/USD se move quando o Fed age</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏠</div><div><div class="w-name">Imóveis e Empréstimos</div><div class="w-desc">Score de crédito, financiamentos, dívida boa vs ruim, alugar vs comprar — a matemática real</div></div></div>
+      <div class="w7-chip"><div class="w7-icon">📊</div><div><div class="w7-name">Mundo 7 ⭐ — Academia de Trading</div><div class="w7-desc">Complete todos os 6 mundos para desbloquear. 24 lições em 7 capítulos — Lendo o Mercado, Técnica Avançada (ORB, AMD, Fibonacci, Fluxo de Ordens, Oferta/Demanda), Tipos de Mercado, Psicologia do Trading (6 lições incluindo regra dos 2 stops e checklist pré-trade), Sessões e Risco &amp; Escalonamento. Depois opere em paper trade tudo que aprendeu — sem dinheiro real em risco.</div><div class="w7-markets"><span class="w7-mkt">📈 Ações</span><span class="w7-mkt">₿ Crypto</span><span class="w7-mkt">💱 Forex</span><span class="w7-mkt">📋 Opções</span><span class="w7-mkt">⚡ Futuros</span><span class="w7-mkt">🇧🇷 BRL/USD</span><span class="w7-mkt">🇲🇽 MXN/USD</span></div><div class="w7-badge">Apenas assinantes · Desbloqueia após todos os 6 mundos</div></div></div>
+    </div>
+  </div></div>
+  <div class="academy-section"><div class="academy-inner">
+    <div class="acad-eyebrow">Mundo 7 — Academia de Trading</div>
+    <div class="acad-title">O único app que te ensina a<br>realmente <em>operar.</em></div>
+    <div class="acad-sub">A maioria dos apps financeiros para na teoria. O FinoMundo constrói você pelos 6 mundos de fundamentos e depois abre um terminal completo de paper trading com ferramentas de desenho, calendário econômico, gates de psicologia, relógio de sessões, pontuação de prontidão para prop firms e bolsa mensal.</div>
+    <div class="acad-grid">
+      <div class="acad-card hl"><div class="ac-icon">📊</div><div class="ac-title">Terminal estilo TradingView</div><div class="ac-desc">Gráficos de candlestick reais com 7 timeframes (1m a 1S), Heikin Ashi, gráficos de barras e área. MA, EMA, RSI, MACD, Bollinger Bands, VWAP e toggle de volume com barras coloridas. As ferramentas que traders profissionais realmente usam — explicadas conforme você as usa.</div></div>
+      <div class="acad-card hl"><div class="ac-icon">📐</div><div class="ac-title">Ferramentas de desenho automáticas</div><div class="ac-desc">Retração de Fibonacci com detecção algorítmica de swings — todos os 7 níveis desenhados automaticamente com o nível dourado 0.618 destacado e explicado. Zonas de oferta e demanda colocadas automaticamente a partir de clusters institucionais. Linhas de tendência auto-detectadas. Cada ferramenta tem um tooltip educativo.</div></div>
+      <div class="acad-card"><div class="ac-icon">🧠</div><div class="ac-title">Pesquisa de personalidade do trader</div><div class="ac-desc">Avaliação de 6 perguntas antes de operar identifica sua tolerância ao risco, disponibilidade de tempo e tipo de mercado ideal — scalper, intraday ou swing trader. Resultado permanente vinculado ao seu perfil. Gate obrigatório antes do terminal abrir.</div></div>
+      <div class="acad-card"><div class="ac-icon">📰</div><div class="ac-title">Resumo Diário do Mercado — IA</div><div class="ac-desc">Todo dia o Claude analisa suas posições abertas, explica por que se moveram, adiciona uma nota de psicologia por posição e diz o que observar amanhã. Liga cada posição à lição do currículo que a explica. Powered pelo proxy Vercel.</div></div>
+      <div class="acad-card gn"><div class="ac-icon">📅</div><div class="ac-title">Calendário econômico — traduzido</div><div class="ac-desc">12 eventos de alto impacto com explicações em português, horários no seu fuso local, notas de relevância para o LatAm e restrições automáticas de tamanho de posição em eventos de pasta vermelha. NFP, CPI, Fed, Selic, Banxico, PIB, estoque de petróleo e mais.</div></div>
+      <div class="acad-card"><div class="ac-icon">📈</div><div class="ac-title">Terminal de investimentos de longo prazo</div><div class="ac-desc">Aba de portfólio separada com dividend yields reais, P/L, beta e capitalização de mercado. Abra posições com FinoCoins ganhos em quizzes. Escreva uma tese de investimento e ganhe FC extras. Simulação de DRIP integrada. Prêmio Investidor do Trimestre a cada 3 meses.</div></div>
+    </div>
+    <div class="acad-lock"><div class="al-icon">🔒</div><div class="al-text"><div class="al-title">Conquistado, não dado — o sistema de desbloqueio da Academia</div><div class="al-desc">Complete todos os 6 mundos para chegar à Academia de Trading. Não é uma barreira — é como a educação financeira real funciona. Você não daria as chaves do carro a alguém sem ensinar a dirigir. O terminal é mais valioso porque você o conquistou.</div><div class="al-req"><span class="al-badge">✓ Complete todos os 6 mundos</span><span class="al-badge">✓ 70% em cada quiz</span><span class="al-badge">✓ Pesquisa de personalidade</span><span class="al-badge">✓ Assinatura ativa</span></div></div></div>
+    <div class="acad-pass"><div class="ap-title">📚 Modo Revisão — avance com o erro, não contra ele</div><div class="ap-desc">Errou um quiz 3 vezes? Cards de revisão direcionados ativam para exatamente o que você errou. Tente novamente imediatamente — sem esperar 24 horas. O período de espera só ativa após a tentativa de revisão também falhar.</div></div>
+  </div></div>
+  <div class="psych-section"><div class="psych-inner">
+    <div class="acad-eyebrow">Psicologia do Trading</div>
+    <div class="acad-title">O que realmente destrói<br>contas é <em>você.</em></div>
+    <div class="acad-sub">A maioria dos apps de trading ensina mecânica. O FinoMundo ensina a única coisa que separa traders consistentemente lucrativos de todos os outros — a relação deles com a perda, a disciplina e o estado emocional. Estes não são configurações opcionais. São gates embutidos em cada trade.</div>
+    <div class="psych-grid">
+      <div class="pc"><div class="pc-icon">🧠</div><div class="pc-title">Tagger emocional — antes de cada trade</div><div class="pc-desc">Antes de cada trade você seleciona seu estado emocional: Calmo, Focado, Ansioso, Ganancioso ou Vingança. Ansioso, Ganancioso ou Vingança disparam um aviso e chance de recuar. Cada estado é registrado no diário para revelar padrões ao longo do tempo.</div></div>
+      <div class="pc"><div class="pc-icon">✅</div><div class="pc-title">Checklist pré-trade — 3 perguntas</div><div class="pc-desc">Este é o seu setup definido? Você verificou o timeframe superior? Você está com a cabeça clara? Três perguntas antes de cada execução. Um "Não" dispara uma cautela. Disciplina profissional construída como hábito diário.</div></div>
+      <div class="pc am"><div class="pc-icon">🟢</div><div class="pc-title">Indicador de cabeça fria</div><div class="pc-desc">Indicador persistente no cabeçalho mostrando seu estado mental — Clara, Distraído ou Emocional. Toque para atualizar a qualquer momento. Profissionais verificam o estado mental antes da abertura do mercado. O FinoMundo torna isso a primeira coisa que você vê.</div></div>
+      <div class="pc rd"><div class="pc-icon">🛑</div><div class="pc-title">Bloqueio diário de 2 stops</div><div class="pc-desc">Após dois trades perdedores o terminal bloqueia automaticamente. Sem revenge trading. Sem escalada. A substituição manual existe — mas registra a decisão, avisa que traders que substituem têm taxa de perda 3× maior e exige confirmação. Reinicia à meia-noite.</div></div>
+      <div class="pc"><div class="pc-icon">📉</div><div class="pc-title">Debrief de Perda — aprenda com cada erro</div><div class="pc-desc">Ao fechar um trade perdedor, um debrief instantâneo mostra exatamente o que o gráfico estava dizendo na entrada — direção da tendência, RSI, conflito de timeframe superior. Referencia tanto a lição de Psicologia quanto a de Análise Top-Down.</div></div>
+      <div class="pc"><div class="pc-icon">📔</div><div class="pc-title">Diário de não-trade</div><div class="pc-desc">Registre por que você escolheu NÃO operar hoje — 6 opções pré-definidas incluindo "Nenhum setup válido," "Evento de notícia de alto impacto — fora do mercado," e "Não estou com a cabeça no lugar." Cada entrada adiciona 10 pontos à pontuação de prontidão.</div></div>
+    </div>
+    <div class="psych-quote"><div class="pq-icon">📖</div><div><div class="pq-text">"Sua relação com a perda define toda a sua carreira no trading. O trader que domina a perda vai superar todos os outros."</div><div class="pq-attr">— Inspirado em Tom Hougaard, "The Best Loser Wins" · Referenciado ao longo do currículo de Psicologia do Trading do Mundo 7</div></div></div>
+  </div></div>
+  <div class="prop-section"><div class="prop-inner">
+    <div class="acad-eyebrow">Prop Firms e Bolsa</div>
+    <div class="acad-title">Pagamos pela sua primeira<br><em>avaliação real.</em></div>
+    <div class="acad-sub">Todo mês o FinoMundo paga por uma avaliação de conta sim financiada de prop firm para o melhor paper trader. O vencedor escolhe a firma e o tamanho da conta. Todo trimestre o melhor investidor de longo prazo recebe 10.000 FinoCoins e $25 via Wise para sua primeira ação fracionada real.</div>
+    <div class="prop-grid">
+      <div class="prop-card gn"><div class="pc2-icon">🎯</div><div class="pc2-title">Pontuação de Prontidão para Prop Firm</div><div class="pc2-desc">Após 30 dias de atividade seu terminal gera uma pontuação de 0 a 100 em 6 métricas: taxa de acerto (25pts), RR médio (20pts), aderência à regra dos 2 stops (20pts), consistência emocional (15pts), conclusão do checklist (10pts) e disciplina de não-trade (10pts). Abaixo de 60 = continue aprendendo. 60–79 = construindo disciplina. 80+ = pronto para avaliação.</div><div class="sim-note"><div class="sim-text">⚠️ Uma "conta sim financiada de 50K" significa $50.000 em poder de compra simulado — não seu dinheiro em risco. Sua exposição real é o limite de drawdown (~$2.000–$6.000 dependendo do tamanho da conta) mais a taxa de avaliação. Explicado claramente em cada card de prop firm no app.</div></div></div>
+      <div class="prop-card gd"><div class="pc2-icon">🎓</div><div class="pc2-title">Bolsa FinoMundo</div><div class="pc2-desc">O melhor paper trader do mês recebe uma avaliação real de prop firm paga pelo FinoMundo. O vencedor escolhe a firma e o tamanho da conta sim financiada — 50K, 100K ou 150K — com base nas métricas de desempenho. Qualquer pessoa pode ganhar. Vencedores menores de 18 anos têm o prêmio guardado até completar 18 anos. Certificado e FinoCoins são imediatos independente da idade.</div><div class="scholar-tiers"><div class="st-card" style="border-color:rgba(26,158,110,.4);background:rgba(26,158,110,.06);"><div class="st-val" style="color:#4ade80;">50K sim</div><div class="st-reqs">Taxa de acerto 60%+ · Aderência 2 stops 80%+</div></div><div class="st-card" style="border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.06);"><div class="st-val" style="color:var(--amber);">100K sim</div><div class="st-reqs">Acerto 65%+ · RR 1:1,8+ · 2 stops 90%+</div></div><div class="st-card" style="border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.04);"><div class="st-val" style="color:var(--gold);">150K sim</div><div class="st-reqs">Acerto 70%+ · RR 1:2,0+ · 2 stops 95%+</div></div></div></div>
+      <div class="prop-card full am"><div class="pc2-icon">🏢</div><div class="pc2-title">7 Prop Firms — Totalmente Explicadas no App</div><div class="pc2-desc" style="margin-bottom:14px;">Todas as principais prop firms de futuros são cobertas — destaques traduzidos em português, estruturas de drawdown em linguagem simples, exposição real em dólares esclarecida, elegibilidade por país mostrada por bandeira e terminologia de conta sim financiada usada de forma consistente. O app ensina exatamente o que é uma prop firm e quais firmas estão disponíveis no seu país antes de você considerar comprar uma avaliação.</div><div class="pf-row"><div class="pf-chip pk">⭐ Alpha Futures<br>Escolha do Fundador</div><div class="pf-chip">Apex Trader<br>Funding</div><div class="pf-chip">Tradeify</div><div class="pf-chip">Take Profit<br>Trader</div><div class="pf-chip">The Futures<br>Desk</div><div class="pf-chip">Lucid<br>Trading</div><div class="pf-chip">Topstep<br>12+ anos</div></div></div>
+    </div>
+  </div></div>
+  <div class="proof-strip"><div class="proof-inner">
+    <div class="proof-stat"><div class="proof-num">1,1B</div><div class="proof-lbl">Pessoas nos nossos 3 idiomas</div></div>
+    <div class="proof-stat"><div class="proof-num">44</div><div class="proof-lbl">Lições nos 7 mundos incluindo a Academia de Trading</div></div>
+    <div class="proof-stat"><div class="proof-num">200+</div><div class="proof-lbl">Termos no glossário em inglês, português e espanhol</div></div>
+    <div class="proof-stat"><div class="proof-num">19</div><div class="proof-lbl">Países com preços em moeda local</div></div>
+  </div></div>
+  <div class="pricing-section">
+    <div class="s-eye">Preços</div>
+    <div class="s-title">O mesmo app. Um preço justo<br>para cada país.</div>
+    <div class="s-sub">Cada país paga em sua própria moeda a um preço que reflete os salários locais — não em dólares americanos. O mesmo app completo em todo lugar, incluindo a Academia de Trading. Os mercados de língua inglesa são precificados para refletir o currículo premium de trading. Os mercados LatAm são precificados para refletir a missão.</div>
+    <div class="tier-row">
+      <div class="tier-head"><div class="tier-label">Global</div><div class="tier-flags">🇺🇸 🇨🇦 🇬🇧 🇦🇺 🇪🇺</div><div class="tier-name">Mercados padrão</div></div>
+      <div class="tier-head feat"><div class="tier-badge">Preço missão 🌱</div><div class="tier-flags">🇧🇷 🇨🇴 🇵🇪 🇦🇷 🇨🇱 🇻🇪 🇪🇨</div><div class="tier-name">América do Sul</div></div>
+      <div class="tier-head"><div class="tier-label">Preço missão 🌱</div><div class="tier-flags">🇲🇽 🇬🇹 🇭🇳 🇸🇻 🇳🇮 🇨🇷 🇵🇦</div><div class="tier-name">México e América Central</div></div>
+    </div>
+    <div class="countries-grid">
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇺🇸</div><div><div class="cc-name">Estados Unidos</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$5.99</div><div class="cc-per">/mês</div><div class="cc-yr">$46/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇦</div><div><div class="cc-name">Canadá</div><div class="cc-cur">Dólar Canadense · CAD</div></div></div><div class="cc-price"><div class="cc-amt">CA$7.99</div><div class="cc-per">/mês</div><div class="cc-yr">CA$61/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇧</div><div><div class="cc-name">Reino Unido</div><div class="cc-cur">Libra Esterlina · GBP</div></div></div><div class="cc-price"><div class="cc-amt">£4.49</div><div class="cc-per">/mês</div><div class="cc-yr">£34/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇦🇺</div><div><div class="cc-name">Austrália</div><div class="cc-cur">Dólar Australiano · AUD</div></div></div><div class="cc-price"><div class="cc-amt">A$8.99</div><div class="cc-per">/mês</div><div class="cc-yr">A$68/ano</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇪🇺</div><div><div class="cc-name">Europa</div><div class="cc-cur">Euro · EUR</div></div></div><div class="cc-price"><div class="cc-amt">€5.49</div><div class="cc-per">/mês</div><div class="cc-yr">€42/ano</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brasil</div><div class="cc-cur">Real Brasileiro · BRL</div></div></div><div class="cc-price"><div class="cc-amt">R$10</div><div class="cc-per">/mês</div><div class="cc-yr">R$60/ano</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇴</div><div><div class="cc-name">Colômbia</div><div class="cc-cur">Peso Colombiano · COP</div></div></div><div class="cc-price"><div class="cc-amt">COP 8.000</div><div class="cc-per">/mês</div><div class="cc-yr">COP 48.000/ano</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇵🇪</div><div><div class="cc-name">Peru</div><div class="cc-cur">Sol Peruano · PEN</div></div></div><div class="cc-price"><div class="cc-amt">S/7.50</div><div class="cc-per">/mês</div><div class="cc-yr">S/45/ano</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-cur">Peso Argentino · ARS</div></div></div><div class="cc-price"><div class="cc-amt">AR$1.800</div><div class="cc-per">/mês</div><div class="cc-yr">AR$10.800/ano</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇱</div><div><div class="cc-name">Chile</div><div class="cc-cur">Peso Chileno · CLP</div></div></div><div class="cc-price"><div class="cc-amt">CLP 1.800</div><div class="cc-per">/mês</div><div class="cc-yr">CLP 10.800/ano</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇪🇨</div><div><div class="cc-name">Equador</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mês</div><div class="cc-yr">$12/ano</div></div></div>
+        <div class="cc feat" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇻🇪</div><div><div class="cc-name">Venezuela</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mês</div><div class="cc-yr">$12/ano</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇲🇽</div><div><div class="cc-name">México</div><div class="cc-cur">Peso Mexicano · MXN</div></div></div><div class="cc-price"><div class="cc-amt">MX$45</div><div class="cc-per">/mês</div><div class="cc-yr">MX$249/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇹</div><div><div class="cc-name">Guatemala</div><div class="cc-cur">Quetzal · GTQ</div></div></div><div class="cc-price"><div class="cc-amt">Q15</div><div class="cc-per">/mês</div><div class="cc-yr">Q90/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇭🇳</div><div><div class="cc-name">Honduras</div><div class="cc-cur">Lempira · HNL</div></div></div><div class="cc-price"><div class="cc-amt">L50</div><div class="cc-per">/mês</div><div class="cc-yr">L300/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇸🇻</div><div><div class="cc-name">El Salvador</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mês</div><div class="cc-yr">$12/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇳🇮</div><div><div class="cc-name">Nicarágua</div><div class="cc-cur">Córdoba · NIO</div></div></div><div class="cc-price"><div class="cc-amt">C$72</div><div class="cc-per">/mês</div><div class="cc-yr">C$432/ano</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇷</div><div><div class="cc-name">Costa Rica</div><div class="cc-cur">Colón · CRC</div></div></div><div class="cc-price"><div class="cc-amt">₡1.100</div><div class="cc-per">/mês</div><div class="cc-yr">₡6.600/ano</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇵🇦</div><div><div class="cc-name">Panamá</div><div class="cc-cur">Balboa / USD · PAB</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mês</div><div class="cc-yr">$12/ano</div></div></div>
+      </div>
+    </div>
+    <div class="note-row">
+      <div class="note-card">Os mercados de língua inglesa são precificados para refletir o currículo completo da Academia de Trading — ferramentas de gráficos, desenhos automáticos, educação sobre prop firms, sistema de psicologia e bolsa mensal.</div>
+      <div class="note-card feat">O Brasil aceita Pix. Todos os preços sul-americanos são cobrados em moeda local via App Store e Google Play. O preço missão reflete a paridade do poder de compra — a mesma fração justa do salário local em todos os lugares.</div>
+      <div class="note-card">O México suporta OXXO Pay. Equador, El Salvador, Venezuela e Panamá usam USD oficialmente. A América Central é precificada no mesmo padrão de preço missão da América do Sul.</div>
+    </div>
+    <div class="family-strip"><div class="fam-icon">👨‍👩‍👧‍👦</div><div class="fam-text">O <strong>Plano Familiar</strong> cobre até 4 crianças por <strong>2,5× o preço individual</strong> em qualquer moeda. Uma conta, quatro filhos, todos os mundos desbloqueados incluindo a Academia de Trading. <strong>Licenciamento escolar a 50% de desconto por aluno — mínimo de 10 alunos.</strong> Entre em contato em finomundo.world.</div></div>
+  </div>
+  <div class="mission"><div class="mission-inner">
+    <div class="mission-slogan">Tu mundo · Tu riqueza</div>
+    <h2 class="mission-h">A educação financeira<br>pertence a <em>todos.</em></h2>
+    <div class="mission-body">
+      <p>O FinoMundo foi construído para toda criança e adulto que merece acesso à educação financeira — independentemente de onde nasceu, que idioma fala ou a qual escola teve acesso.</p>
+      <p>Foi inspirado especificamente pelos <strong>600+ milhões de pessoas na América Latina e na Península Ibérica</strong> que historicamente foram mal atendidos por ferramentas financeiras construídas exclusivamente em inglês para mercados de língua inglesa.</p>
+      <p>Mas a verdade que descobrimos ao construí-lo é esta: <strong>o analfabetismo financeiro não tem fronteiras.</strong> Os EUA, Canadá, Reino Unido e todos os outros países do mundo têm pessoas que nunca aprenderam o que é uma ação, como os juros funcionam ou por que sua moeda enfraquece quando o Fed aumenta as taxas.</p>
+      <p>O FinoMundo existe para todos eles. Começou no LatAm porque é onde a necessidade era mais aguda e mais ignorada. <strong>Não vai terminar aí.</strong></p>
+    </div>
+    <button class="mission-cta" onclick="document.getElementById('em-pt').scrollIntoView({behavior:'smooth'})">Entrar na lista — é gratuito</button>
+  </div></div>
+  <div class="footer"><div><div class="footer-brand">Fino<em>Mundo</em></div><div class="footer-sub">finomundo.world</div></div><div class="footer-links"><span onclick="setLang('en')">🇺🇸 English</span><span onclick="setLang('pt')">🇧🇷 Português</span><span onclick="setLang('es')">🇲🇽 Español</span><span onclick="openPrivacy()">Privacidade</span><span>Contato</span></div></div>
+</div>
+
+<!-- ═══ ESPAÑOL ═══ -->
+<div class="page" id="pg-es">
+  <div class="hero">
+    <div class="eyebrow"><div class="edot"></div>En construcción · Únete a la lista</div>
+    <h1>Tu mundo.<br><em>Tu riqueza.</em></h1>
+    <div class="slogan">Aprender · Ganar · Explorar</div>
+    <p class="hero-sub">FinoMundo enseña a niños y adultos las habilidades financieras que la escuela nunca enseñó — a través de lecciones gamificadas diarias en inglés, portugués y español. Domina los fundamentos. Desbloquea el paper trading real. Aprende cómo tus emociones destruyen cuentas antes de arriesgar un solo dólar.</p>
+    <div class="cta-group">
+      <div class="cta-row"><input class="cta-input" type="email" placeholder="Tu dirección de correo electrónico" id="em-es"><button class="cta-btn" onclick="join('es')">Unirse a la lista</button></div>
+      <span class="cta-note" id="note-es">El Mundo 1 es gratis para siempre. Sin tarjeta de crédito.</span>
+      <div class="wl-row"><div class="avs"><div class="av" style="background:#E1F5EE;color:#0F6E56;">M</div><div class="av" style="background:#EEEDFE;color:#3C3489;">S</div><div class="av" style="background:#FAEEDA;color:#633806;">J</div><div class="av" style="background:#FAECE7;color:#712B13;">A</div></div><span>247 familias ya esperando</span></div>
+    </div>
+  </div>
+  <div class="phone-wrap"><div class="phone"><div class="p-notch"></div><div class="p-screen">
+    <div class="p-hd"><div class="p-logo">Fino<em>Mundo</em></div><div class="p-streak">🔥 7 días</div></div>
+    <div class="p-xp"><div class="p-xp-f"></div></div>
+    <div class="p-chart-bar"><div class="p-bar" style="height:42%;background:#ef5350;"></div><div class="p-bar" style="height:58%;background:#26a69a;"></div><div class="p-bar" style="height:36%;background:#ef5350;"></div><div class="p-bar" style="height:72%;background:#26a69a;"></div><div class="p-bar" style="height:82%;background:#26a69a;"></div><div class="p-bar" style="height:66%;background:#26a69a;"></div><div class="p-bar" style="height:90%;background:#26a69a;"></div><div class="p-bar" style="height:74%;background:#ef5350;"></div><div class="p-bar" style="height:88%;background:#26a69a;"></div><div class="p-bar" style="height:96%;background:#26a69a;"></div></div>
+    <div class="p-card"><div class="p-world">📊 Mundo 7 — Academia de Trading</div><div class="p-q">Fibonacci 0.618 detectado en BRL/USD. ¿Qué significa para una entrada larga?</div><div class="p-opts"><div class="p-opt">Salir del trade ahora</div><div class="p-opt win">Zona de alta probabilidad de reversión ✓</div><div class="p-opt">Ignorar — es solo un número</div></div></div>
+    <div class="p-coins"><div class="coin"></div>340 FinoCoins · Puntuación de Preparación: 78</div>
+  </div></div></div>
+  <div class="div-bar">Construyendo para <em>1.100 millones de personas</em> en 3 idiomas · 19 países · finomundo.world</div>
+  <div class="section">
+    <div class="s-eye">Cómo funciona</div>
+    <div class="s-title">Aprende como un juego.<br>Piensa como un <em>inversor.</em></div>
+    <div class="steps">
+      <div class="step" data-n="1"><div class="step-title">Lecciones diarias de 5 minutos</div><div class="step-body">Cuestionarios rápidos sobre conceptos financieros reales — ahorro, inversiones, negocios, economía — adaptados a tu edad, idioma y país. Aprueba con 70% para avanzar. El Modo Revisión se activa en caso de fallo — sin bloqueos de 24 horas.</div></div>
+      <div class="step" data-n="2"><div class="step-title">Gana FinoCoins</div><div class="step-body">Saca 90%+ en los quizzes y gana 100 FC de bono. Usa FinoCoins para abrir posiciones de inversión a largo plazo, desbloquear contenido y subir en el ranking global. Tus monedas reflejan tu dominio.</div></div>
+      <div class="step" data-n="3"><div class="step-title">Desbloquea la Academia de Trading</div><div class="step-body">Completa los 6 mundos y la Academia de Trading completa se abre — terminal profesional con herramientas de dibujo, puertas de psicología, calendario económico y beca mensual de prop firm.</div></div>
+    </div>
+  </div>
+  <div class="worlds-strip"><div class="worlds-inner">
+    <div class="s-eye">El currículo</div>
+    <div class="s-title">6 mundos de fundamentos.<br>Luego lo real.</div>
+    <div class="worlds-grid">
+      <div class="w-chip"><div class="w-icon">💰</div><div><div class="w-name">Ahorrar y Gastar</div><div class="w-desc">Presupuestos, necesidades vs deseos, regla 50/30/20, tu primer objetivo de ahorro</div><div class="w-free">Gratis para siempre · Desde 8 años</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏦</div><div><div class="w-name">Bancos e Interés</div><div class="w-desc">Interés compuesto, cuentas de ahorro, Regla del 72, reserva fraccionaria</div></div></div>
+      <div class="w-chip"><div class="w-icon">📈</div><div><div class="w-name">Acciones e Inversión</div><div class="w-desc">Acciones, ETFs, dividendos, DRIP, REITs, DCA, P/E — 18 lecciones en 6 capítulos incluyendo estrategias a largo plazo</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏪</div><div><div class="w-name">Gestionar un Negocio</div><div class="w-desc">Ingresos, ganancias, oferta y demanda, fijación de precios, mentalidad emprendedora</div></div></div>
+      <div class="w-chip"><div class="w-icon">🌍</div><div><div class="w-name">Economía Global</div><div class="w-desc">Inflación, tipos de cambio, Fed/BCB/Banxico, ciclos económicos — por qué el BRL/USD se mueve cuando la Fed actúa</div></div></div>
+      <div class="w-chip"><div class="w-icon">🏠</div><div><div class="w-name">Bienes Raíces y Préstamos</div><div class="w-desc">Puntaje de crédito, hipotecas, deuda buena vs mala, alquilar vs comprar — la matemática real</div></div></div>
+      <div class="w7-chip"><div class="w7-icon">📊</div><div><div class="w7-name">Mundo 7 ⭐ — Academia de Trading</div><div class="w7-desc">Completa los 6 mundos para desbloquear. 24 lecciones en 7 capítulos — Leyendo el Mercado, Técnica Avanzada (ORB, AMD, Fibonacci, Flujo de Órdenes, Oferta/Demanda), Tipos de Mercado, Psicología del Trading (6 lecciones incluyendo regla de 2 pérdidas y checklist pre-operación), Sesiones y Riesgo &amp; Escalamiento. Luego opera en paper trade todo lo que aprendiste — sin dinero real en riesgo.</div><div class="w7-markets"><span class="w7-mkt">📈 Acciones</span><span class="w7-mkt">₿ Crypto</span><span class="w7-mkt">💱 Forex</span><span class="w7-mkt">📋 Opciones</span><span class="w7-mkt">⚡ Futuros</span><span class="w7-mkt">🇧🇷 BRL/USD</span><span class="w7-mkt">🇲🇽 MXN/USD</span></div><div class="w7-badge">Solo suscriptores · Se desbloquea después de los 6 mundos</div></div></div>
+    </div>
+  </div></div>
+  <div class="academy-section"><div class="academy-inner">
+    <div class="acad-eyebrow">Mundo 7 — Academia de Trading</div>
+    <div class="acad-title">La única app que te enseña a<br>realmente <em>operar.</em></div>
+    <div class="acad-sub">La mayoría de las apps financieras se detienen en la teoría. FinoMundo te construye a través de 6 mundos de fundamentos y luego abre un terminal completo de paper trading con herramientas de dibujo, calendario económico, puertas de psicología, reloj de sesiones, puntuación de preparación para prop firms y beca mensual.</div>
+    <div class="acad-grid">
+      <div class="acad-card hl"><div class="ac-icon">📊</div><div class="ac-title">Terminal estilo TradingView</div><div class="ac-desc">Gráficos de velas reales con 7 marcos de tiempo (1m a 1S), Heikin Ashi, gráficos de barras y área. MA, EMA, RSI, MACD, Bandas de Bollinger, VWAP y toggle de volumen con barras de código de colores. Las herramientas que usan los traders profesionales — explicadas mientras las usas.</div></div>
+      <div class="acad-card hl"><div class="ac-icon">📐</div><div class="ac-title">Herramientas de dibujo automáticas</div><div class="ac-desc">Retroceso de Fibonacci con detección algorítmica de swings — los 7 niveles dibujados automáticamente con el nivel dorado 0.618 destacado y explicado. Zonas de oferta y demanda colocadas automáticamente desde clusters institucionales. Líneas de tendencia auto-detectadas. Cada herramienta tiene un tooltip educativo.</div></div>
+      <div class="acad-card"><div class="ac-icon">🧠</div><div class="ac-title">Encuesta de personalidad del trader</div><div class="ac-desc">Evaluación de 6 preguntas antes de operar identifica tu tolerancia al riesgo, disponibilidad de tiempo y tipo de mercado ideal — scalper, intraday o swing trader. Resultado permanente vinculado a tu perfil. Puerta requerida antes de que el terminal abra.</div></div>
+      <div class="acad-card"><div class="ac-icon">📰</div><div class="ac-title">Resumen Diario del Mercado — IA</div><div class="ac-desc">Cada día Claude analiza tus posiciones abiertas, explica por qué se movieron, agrega una nota de psicología por posición y te dice qué observar mañana. Vincula cada posición a la lección del currículo que la explica.</div></div>
+      <div class="acad-card gn"><div class="ac-icon">📅</div><div class="ac-title">Calendario económico — traducido</div><div class="ac-desc">12 eventos de alto impacto con explicaciones en español, horarios en tu zona horaria local, notas de relevancia para LatAm y restricciones automáticas de tamaño de posición en eventos de carpeta roja. NFP, IPC, Fed, Selic, Banxico, PIB, inventarios de petróleo y más.</div></div>
+      <div class="acad-card"><div class="ac-icon">📈</div><div class="ac-title">Terminal de inversión a largo plazo</div><div class="ac-desc">Pestaña de portafolio separada con dividend yields reales, P/E, beta y capitalización de mercado. Abre posiciones con FinoCoins ganados en quizzes. Escribe una tesis de inversión y gana FC extra. Simulación de DRIP integrada. Premio Inversor del Trimestre cada 3 meses.</div></div>
+    </div>
+    <div class="acad-lock"><div class="al-icon">🔒</div><div class="al-text"><div class="al-title">Ganado, no dado — el sistema de desbloqueo de la Academia</div><div class="al-desc">Completa los 6 mundos para llegar a la Academia de Trading. No es una barrera — así funciona la educación financiera real. No le darías las llaves del auto a alguien sin enseñarle a manejar. El terminal es más valioso porque lo ganaste.</div><div class="al-req"><span class="al-badge">✓ Completa los 6 mundos</span><span class="al-badge">✓ 70% en cada quiz</span><span class="al-badge">✓ Encuesta de personalidad</span><span class="al-badge">✓ Suscripción activa</span></div></div></div>
+    <div class="acad-pass"><div class="ap-title">📚 Modo Revisión — avanza con el error, no contra él</div><div class="ap-desc">¿Fallaste un quiz 3 veces? Tarjetas de revisión dirigidas se activan para exactamente lo que fallaste. Reintenta inmediatamente — sin esperar 24 horas. El período de espera solo se activa después de que el intento de revisión también falle.</div></div>
+  </div></div>
+  <div class="psych-section"><div class="psych-inner">
+    <div class="acad-eyebrow">Psicología del Trading</div>
+    <div class="acad-title">Lo que realmente destruye<br>cuentas eres <em>tú.</em></div>
+    <div class="acad-sub">La mayoría de las apps de trading enseñan mecánica. FinoMundo enseña la única cosa que separa a los traders consistentemente rentables de todos los demás — su relación con la pérdida, la disciplina y el estado emocional. No son configuraciones opcionales. Son puertas integradas en cada operación.</div>
+    <div class="psych-grid">
+      <div class="pc"><div class="pc-icon">🧠</div><div class="pc-title">Etiquetador emocional — antes de cada trade</div><div class="pc-desc">Antes de cada operación seleccionas tu estado emocional: Calmado, Enfocado, Ansioso, Codicioso o Venganza. Ansioso, Codicioso o Venganza activan una advertencia y oportunidad de retroceder. Cada estado se registra para revelar patrones con el tiempo.</div></div>
+      <div class="pc"><div class="pc-icon">✅</div><div class="pc-title">Checklist pre-operación — 3 preguntas</div><div class="pc-desc">¿Es tu setup definido? ¿Verificaste el timeframe superior? ¿Estás con la mente clara? Tres preguntas antes de cada ejecución. Un "No" activa una cautela. Disciplina profesional construida como hábito diario.</div></div>
+      <div class="pc am"><div class="pc-icon">🟢</div><div class="pc-title">Indicador de mente fría</div><div class="pc-desc">Indicador persistente en el encabezado que muestra tu estado mental — Clara, Distraído o Emocional. Toca para actualizar en cualquier momento. Los profesionales verifican su estado mental antes de la apertura del mercado.</div></div>
+      <div class="pc rd"><div class="pc-icon">🛑</div><div class="pc-title">Bloqueo diario de 2 pérdidas</div><div class="pc-desc">Después de dos operaciones perdedoras el terminal se bloquea automáticamente. Sin revenge trading. Sin escalada. La anulación manual existe — pero registra la decisión, advierte que los traders que la usan tienen tasa de pérdida 3× mayor y requiere confirmación. Se reinicia a medianoche.</div></div>
+      <div class="pc"><div class="pc-icon">📉</div><div class="pc-title">Debrief de Pérdida — aprende de cada error</div><div class="pc-desc">Al cerrar una operación perdedora, un debrief instantáneo muestra exactamente lo que el gráfico te decía en la entrada — dirección de la tendencia, RSI, conflicto de timeframe superior. Hace referencia tanto a la lección de Psicología como a la de Análisis Top-Down.</div></div>
+      <div class="pc"><div class="pc-icon">📔</div><div class="pc-title">Diario de no-operación</div><div class="pc-desc">Registra por qué elegiste NO operar hoy — 6 opciones predefinidas incluyendo "Sin setup válido," "Evento de noticias de alto impacto — fuera del mercado," y "No estoy en el estado mental correcto." Cada entrada agrega 10 puntos a tu puntuación de preparación.</div></div>
+    </div>
+    <div class="psych-quote"><div class="pq-icon">📖</div><div><div class="pq-text">"Tu relación con perder define toda tu carrera en el trading. El trader que domina la pérdida superará a todos los demás."</div><div class="pq-attr">— Inspirado en Tom Hougaard, "The Best Loser Wins" · Referenciado a lo largo del currículo de Psicología del Trading del Mundo 7</div></div></div>
+  </div></div>
+  <div class="prop-section"><div class="prop-inner">
+    <div class="acad-eyebrow">Prop Firms y Beca</div>
+    <div class="acad-title">Pagamos tu primera<br><em>evaluación real.</em></div>
+    <div class="acad-sub">Cada mes FinoMundo paga por una evaluación de cuenta sim financiada de prop firm para el mejor paper trader. El ganador elige la firma y el tamaño de cuenta. Cada trimestre el mejor inversor a largo plazo recibe 10,000 FinoCoins y $25 via Wise para su primera acción fraccionada real.</div>
+    <div class="prop-grid">
+      <div class="prop-card gn"><div class="pc2-icon">🎯</div><div class="pc2-title">Puntuación de Preparación para Prop Firm</div><div class="pc2-desc">Después de 30 días de actividad tu terminal genera una puntuación de 0 a 100 en 6 métricas: tasa de acierto (25pts), RR promedio (20pts), adherencia a la regla de 2 pérdidas (20pts), consistencia emocional (15pts), completación del checklist (10pts) y disciplina de no-operación (10pts). Menos de 60 = sigue aprendiendo. 60–79 = construyendo disciplina. 80+ = listo para evaluación.</div><div class="sim-note"><div class="sim-text">⚠️ Una "cuenta sim financiada de 50K" significa $50,000 en poder de compra simulado — no tu dinero en riesgo. Tu exposición real es el límite de drawdown (~$2,000–$6,000 según el tamaño de cuenta) más la tarifa de evaluación. Explicado claramente en cada tarjeta de prop firm dentro de la app.</div></div></div>
+      <div class="prop-card gd"><div class="pc2-icon">🎓</div><div class="pc2-title">Beca FinoMundo</div><div class="pc2-desc">El mejor paper trader del mes recibe una evaluación real de prop firm pagada por FinoMundo. El ganador elige la firma y el tamaño de cuenta sim financiada — 50K, 100K o 150K — según sus métricas de rendimiento. Cualquiera puede ganar. Los ganadores menores de 18 años tienen el premio guardado hasta cumplir 18 años. Certificado y FinoCoins son inmediatos independientemente de la edad.</div><div class="scholar-tiers"><div class="st-card" style="border-color:rgba(26,158,110,.4);background:rgba(26,158,110,.06);"><div class="st-val" style="color:#4ade80;">50K sim</div><div class="st-reqs">Tasa de acierto 60%+ · Adherencia 2 pérd. 80%+</div></div><div class="st-card" style="border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.06);"><div class="st-val" style="color:var(--amber);">100K sim</div><div class="st-reqs">Acierto 65%+ · RR 1:1.8+ · 2 pérd. 90%+</div></div><div class="st-card" style="border-color:rgba(255,215,0,.4);background:rgba(255,215,0,.04);"><div class="st-val" style="color:var(--gold);">150K sim</div><div class="st-reqs">Acierto 70%+ · RR 1:2.0+ · 2 pérd. 95%+</div></div></div></div>
+      <div class="prop-card full am"><div class="pc2-icon">🏢</div><div class="pc2-title">7 Prop Firms — Completamente Explicadas en la App</div><div class="pc2-desc" style="margin-bottom:14px;">Todas las principales prop firms de futuros están cubiertas — destacados traducidos al español, estructuras de drawdown en lenguaje simple, exposición real en dólares aclarada, elegibilidad por país mostrada por bandera y terminología de cuenta sim financiada usada de forma consistente. La app te enseña exactamente qué es una prop firm y qué firmas están disponibles en tu país antes de que consideres comprar una evaluación.</div><div class="pf-row"><div class="pf-chip pk">⭐ Alpha Futures<br>Elección del Fundador</div><div class="pf-chip">Apex Trader<br>Funding</div><div class="pf-chip">Tradeify</div><div class="pf-chip">Take Profit<br>Trader</div><div class="pf-chip">The Futures<br>Desk</div><div class="pf-chip">Lucid<br>Trading</div><div class="pf-chip">Topstep<br>12+ años</div></div></div>
+    </div>
+  </div></div>
+  <div class="proof-strip"><div class="proof-inner">
+    <div class="proof-stat"><div class="proof-num">1.100M</div><div class="proof-lbl">Personas en nuestros 3 idiomas</div></div>
+    <div class="proof-stat"><div class="proof-num">44</div><div class="proof-lbl">Lecciones en 7 mundos incluyendo la Academia de Trading</div></div>
+    <div class="proof-stat"><div class="proof-num">200+</div><div class="proof-lbl">Términos del glosario en inglés, portugués y español</div></div>
+    <div class="proof-stat"><div class="proof-num">19</div><div class="proof-lbl">Países con precios en moneda local</div></div>
+  </div></div>
+  <div class="pricing-section">
+    <div class="s-eye">Precios</div>
+    <div class="s-title">La misma app. Un precio justo<br>para cada país.</div>
+    <div class="s-sub">Cada país paga en su propia moneda a un precio que refleja los salarios locales — no en dólares estadounidenses. La misma app completa en todos lados incluyendo la Academia de Trading. Los mercados de habla inglesa tienen precio para reflejar el currículo premium de trading. Los mercados LatAm tienen precio para reflejar la misión.</div>
+    <div class="tier-row">
+      <div class="tier-head"><div class="tier-label">Global</div><div class="tier-flags">🇺🇸 🇨🇦 🇬🇧 🇦🇺 🇪🇺</div><div class="tier-name">Mercados estándar</div></div>
+      <div class="tier-head feat"><div class="tier-badge">Precio misión 🌱</div><div class="tier-flags">🇧🇷 🇨🇴 🇵🇪 🇦🇷 🇨🇱 🇻🇪 🇪🇨</div><div class="tier-name">América del Sur</div></div>
+      <div class="tier-head"><div class="tier-label">Precio misión 🌱</div><div class="tier-flags">🇲🇽 🇬🇹 🇭🇳 🇸🇻 🇳🇮 🇨🇷 🇵🇦</div><div class="tier-name">México y Centroamérica</div></div>
+    </div>
+    <div class="countries-grid">
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇺🇸</div><div><div class="cc-name">Estados Unidos</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$5.99</div><div class="cc-per">/mes</div><div class="cc-yr">$46/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇦</div><div><div class="cc-name">Canadá</div><div class="cc-cur">Dólar Canadiense · CAD</div></div></div><div class="cc-price"><div class="cc-amt">CA$7.99</div><div class="cc-per">/mes</div><div class="cc-yr">CA$61/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇧</div><div><div class="cc-name">Reino Unido</div><div class="cc-cur">Libra Esterlina · GBP</div></div></div><div class="cc-price"><div class="cc-amt">£4.49</div><div class="cc-per">/mes</div><div class="cc-yr">£34/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇦🇺</div><div><div class="cc-name">Australia</div><div class="cc-cur">Dólar Australiano · AUD</div></div></div><div class="cc-price"><div class="cc-amt">A$8.99</div><div class="cc-per">/mes</div><div class="cc-yr">A$68/año</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇪🇺</div><div><div class="cc-name">Europa</div><div class="cc-cur">Euro · EUR</div></div></div><div class="cc-price"><div class="cc-amt">€5.49</div><div class="cc-per">/mes</div><div class="cc-yr">€42/año</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇧🇷</div><div><div class="cc-name">Brasil</div><div class="cc-cur">Real Brasileño · BRL</div></div></div><div class="cc-price"><div class="cc-amt">R$10</div><div class="cc-per">/mes</div><div class="cc-yr">R$60/año</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇴</div><div><div class="cc-name">Colombia</div><div class="cc-cur">Peso Colombiano · COP</div></div></div><div class="cc-price"><div class="cc-amt">COP 8.000</div><div class="cc-per">/mes</div><div class="cc-yr">COP 48.000/año</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇵🇪</div><div><div class="cc-name">Perú</div><div class="cc-cur">Sol Peruano · PEN</div></div></div><div class="cc-price"><div class="cc-amt">S/7.50</div><div class="cc-per">/mes</div><div class="cc-yr">S/45/año</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇦🇷</div><div><div class="cc-name">Argentina</div><div class="cc-cur">Peso Argentino · ARS</div></div></div><div class="cc-price"><div class="cc-amt">AR$1.800</div><div class="cc-per">/mes</div><div class="cc-yr">AR$10.800/año</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇨🇱</div><div><div class="cc-name">Chile</div><div class="cc-cur">Peso Chileno · CLP</div></div></div><div class="cc-price"><div class="cc-amt">CLP 1.800</div><div class="cc-per">/mes</div><div class="cc-yr">CLP 10.800/año</div></div></div>
+        <div class="cc feat"><div class="cc-left"><div class="cc-flag">🇪🇨</div><div><div class="cc-name">Ecuador</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mes</div><div class="cc-yr">$12/año</div></div></div>
+        <div class="cc feat" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇻🇪</div><div><div class="cc-name">Venezuela</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mes</div><div class="cc-yr">$12/año</div></div></div>
+      </div>
+      <div class="col">
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇲🇽</div><div><div class="cc-name">México</div><div class="cc-cur">Peso Mexicano · MXN</div></div></div><div class="cc-price"><div class="cc-amt">MX$45</div><div class="cc-per">/mes</div><div class="cc-yr">MX$249/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇬🇹</div><div><div class="cc-name">Guatemala</div><div class="cc-cur">Quetzal · GTQ</div></div></div><div class="cc-price"><div class="cc-amt">Q15</div><div class="cc-per">/mes</div><div class="cc-yr">Q90/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇭🇳</div><div><div class="cc-name">Honduras</div><div class="cc-cur">Lempira · HNL</div></div></div><div class="cc-price"><div class="cc-amt">L50</div><div class="cc-per">/mes</div><div class="cc-yr">L300/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇸🇻</div><div><div class="cc-name">El Salvador</div><div class="cc-cur">Dólar Americano · USD</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mes</div><div class="cc-yr">$12/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇳🇮</div><div><div class="cc-name">Nicaragua</div><div class="cc-cur">Córdoba · NIO</div></div></div><div class="cc-price"><div class="cc-amt">C$72</div><div class="cc-per">/mes</div><div class="cc-yr">C$432/año</div></div></div>
+        <div class="cc"><div class="cc-left"><div class="cc-flag">🇨🇷</div><div><div class="cc-name">Costa Rica</div><div class="cc-cur">Colón · CRC</div></div></div><div class="cc-price"><div class="cc-amt">₡1.100</div><div class="cc-per">/mes</div><div class="cc-yr">₡6.600/año</div></div></div>
+        <div class="cc" style="border-radius:0 0 14px 14px;"><div class="cc-left"><div class="cc-flag">🇵🇦</div><div><div class="cc-name">Panamá</div><div class="cc-cur">Balboa / USD · PAB</div></div></div><div class="cc-price"><div class="cc-amt">$1.99</div><div class="cc-per">/mes</div><div class="cc-yr">$12/año</div></div></div>
+      </div>
+    </div>
+    <div class="note-row">
+      <div class="note-card">Los mercados de habla inglesa tienen precio para reflejar el currículo completo de la Academia de Trading — herramientas de gráficos, dibujos automáticos, educación sobre prop firms, sistema de psicología y beca mensual.</div>
+      <div class="note-card feat">Brasil acepta Pix. Todos los precios sudamericanos se cobran en moneda local a través del App Store y Google Play. El precio misión refleja la paridad del poder adquisitivo — la misma fracción justa del salario local en todos lados.</div>
+      <div class="note-card">México soporta OXXO Pay. Ecuador, El Salvador, Venezuela y Panamá usan USD oficialmente. Centroamérica tiene el mismo estándar de precio misión que Sudamérica.</div>
+    </div>
+    <div class="family-strip"><div class="fam-icon">👨‍👩‍👧‍👦</div><div class="fam-text">El <strong>Plan Familiar</strong> cubre hasta 4 niños a <strong>2.5× el precio individual</strong> en cualquier moneda. Una cuenta, cuatro hijos, todos los mundos desbloqueados incluyendo la Academia de Trading. <strong>Licenciamiento escolar al 50% de descuento por estudiante — mínimo 10 estudiantes.</strong> Contáctanos en finomundo.world.</div></div>
+  </div>
+  <div class="mission"><div class="mission-inner">
+    <div class="mission-slogan">Tu mundo · Tu riqueza</div>
+    <h2 class="mission-h">La educación financiera<br>le pertenece a <em>todos.</em></h2>
+    <div class="mission-body">
+      <p>FinoMundo fue construido para todo niño y adulto que merece acceso a la educación financiera — independientemente de dónde nació, qué idioma habla o a qué escuela tuvo acceso.</p>
+      <p>Fue inspirado específicamente por los <strong>600+ millones de personas en América Latina y la Península Ibérica</strong> que históricamente han sido desatendidos por herramientas financieras construidas exclusivamente en inglés para mercados de habla inglesa.</p>
+      <p>Pero la verdad que descubrimos al construirlo es esta: <strong>el analfabetismo financiero no tiene fronteras.</strong> EEUU, Canadá, Reino Unido y todos los demás países del mundo tienen personas que nunca aprendieron qué es una acción, cómo funciona el interés o por qué su moneda se debilita cuando la Fed sube las tasas.</p>
+      <p>FinoMundo existe para todos ellos. Comenzó en LatAm porque ahí es donde la necesidad era más aguda y más ignorada. <strong>No terminará ahí.</strong></p>
+    </div>
+    <button class="mission-cta" onclick="document.getElementById('em-es').scrollIntoView({behavior:'smooth'})">Unirse a la lista — es gratis</button>
+  </div></div>
+  <div class="footer"><div><div class="footer-brand">Fino<em>Mundo</em></div><div class="footer-sub">finomundo.world</div></div><div class="footer-links"><span onclick="setLang('en')">🇺🇸 English</span><span onclick="setLang('pt')">🇧🇷 Português</span><span onclick="setLang('es')">🇲🇽 Español</span><span onclick="openPrivacy()">Privacidad</span><span>Contacto</span></div></div>
+</div>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('pg-'+l).classList.add('on');
+  document.querySelectorAll('.lb').forEach((b,i)=>b.classList.toggle('on',['en','pt','es'][i]===l));
+  window.scrollTo(0,0);
+}
+
+async function join(l){
+  const input=document.getElementById('em-'+l);
+  const note=document.getElementById('note-'+l);
+  const btn=document.querySelector(`button[onclick="join('${l}')"]`);
+  const email=(input.value||'').trim();
+  if(!email)return;
+  const emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if(!emailOk){
+    note.textContent={en:'Please enter a valid email address.',pt:'Digite um e-mail válido.',es:'Ingresa un correo válido.'}[l];
+    return;
+  }
+  btn.disabled=true;
+  btn.textContent={en:'Joining…',pt:'Entrando…',es:'Uniendo…'}[l];
+  note.textContent='';
+  try{
+    const res=await fetch('https://app.beehiiv.com/forms/pub_f25e475c-49c8-49e9-bc83-252b7c0767c2/subscriptions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email,utm_source:'landing_page',utm_medium:'waitlist',utm_campaign:'finomundo_launch'})
+    });
+    if(res.ok||res.status===201||res.status===200||res.status===409){
+      input.value='';
+      note.textContent={en:'🎉 You\'re on the list! We\'ll email you at launch.',pt:'🎉 Você entrou! Te avisamos quando lançar.',es:'🎉 ¡Ya estás! Te avisamos cuando lancemos.'}[l];
+      btn.textContent={en:'You\'re in ✓',pt:'Você entrou ✓',es:'¡Ya estás ✓'}[l];
+      btn.style.background='var(--gd)';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e){
+    note.textContent={en:'Something went wrong. Try again.',pt:'Algo deu errado. Tente novamente.',es:'Algo salió mal. Intenta de nuevo.'}[l];
+    btn.disabled=false;
+    btn.textContent={en:'Join the waitlist',pt:'Entrar na lista',es:'Unirse a la lista'}[l];
+  }
+}
+
+function openPrivacy(){
+  document.getElementById('privacy-modal').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closePrivacy(){
+  document.getElementById('privacy-modal').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePrivacy();});
+</script>
+
+<!-- Privacy Modal -->
+<div id="privacy-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:24px;">
+  <div style="background:#fff;border-radius:20px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:40px 36px;position:relative;">
+    <button onclick="closePrivacy()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#666;line-height:1;">✕</button>
+    <div style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:#0F1A14;margin-bottom:6px;">Privacy Policy</div>
+    <div style="font-size:12px;color:#4A6358;margin-bottom:28px;">Last updated: May 2026 · finomundo.world</div>
+    <div style="font-size:14px;color:#0F1A14;line-height:1.8;">
+      <p style="margin-bottom:16px;"><strong>1. Who we are</strong><br>FinoMundo is a financial literacy application operated as an independent bootstrapped product. Contact: privacy@finomundo.world</p>
+      <p style="margin-bottom:16px;"><strong>2. Information we collect</strong><br>We collect your email address when you join the waitlist or create an account, your in-app progress and quiz results, and device information such as OS version and app version for debugging purposes. We do not collect real financial data or payment details directly — all payments are processed by Apple App Store or Google Play.</p>
+      <p style="margin-bottom:16px;"><strong>3. How we use your information</strong><br>Your email is used to notify you at launch, send educational content you opt into, and communicate important app updates. Your progress data is used to personalize your learning journey and power the leaderboards. We never sell your data to third parties.</p>
+      <p style="margin-bottom:16px;"><strong>4. Data storage</strong><br>Your data is stored securely using Supabase (PostgreSQL with Row Level Security). All data is encrypted in transit using HTTPS/TLS.</p>
+      <p style="margin-bottom:16px;"><strong>5. Children's privacy</strong><br>FinoMundo is designed for ages 8 and up. Users under 13 require parental consent as required by applicable law (COPPA in the US, LGPD in Brazil). Parents may request deletion of their child's data at any time by contacting privacy@finomundo.world.</p>
+      <p style="margin-bottom:16px;"><strong>6. Your rights</strong><br>You have the right to access, correct, or delete your personal data at any time. To exercise these rights, contact privacy@finomundo.world. Users in the EU/EEA have additional rights under GDPR. Brazilian users have rights under LGPD.</p>
+      <p style="margin-bottom:16px;"><strong>7. Third-party services</strong><br>FinoMundo uses RevenueCat for subscription management, Supabase for data storage, Beehiiv for email, and Twelve Data for market data. Each service has its own privacy policy governing their data practices.</p>
+      <p style="margin-bottom:16px;"><strong>8. Data retention</strong><br>We retain your data for as long as your account is active. You may delete your account at any time from within the app or by contacting us. Waitlist emails are retained until you unsubscribe.</p>
+      <p style="margin-bottom:0;"><strong>9. Contact</strong><br>Questions about this policy? Email privacy@finomundo.world — we will respond within 5 business days.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
