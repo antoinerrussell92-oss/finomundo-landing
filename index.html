@@ -669,7 +669,7 @@ async function join(l){
   btn.textContent={en:'Joining…',pt:'Entrando…',es:'Uniendo…'}[l];
   note.textContent='';
   try{
-    const res=await fetch('https://app.beehiiv.com/forms/pub_f25e475c-49c8-49e9-bc83-252b7c0767c2/subscriptions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,utm_source:'landing_page',utm_medium:'waitlist',utm_campaign:'finomundo_launch'})});
+    const res=await fetch('https://fullscope-proxy.vercel.app/api/beehiiv-subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,pub:'finomundo',utm_source:'landing_page',utm_medium:'waitlist',utm_campaign:'finomundo_launch'})});
     if(res.ok||res.status===201||res.status===200||res.status===409){
       input.value='';
       note.textContent={en:'You\'re on the list! We\'ll email you at launch.',pt:'Você entrou! Te avisamos quando lançar.',es:'¡Ya estás! Te avisamos cuando lancemos.'}[l];
